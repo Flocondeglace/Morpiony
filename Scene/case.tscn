@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk5m7w0bvoig3"]
+
+[ext_resource type="Script" path="res://Case.gd" id="1_mooev"]
+
+[node name="Case" type="Button"]
+custom_minimum_size = Vector2(2, 2)
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(0.3, 0.3)
+icon_alignment = 1
+script = ExtResource("1_mooev")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

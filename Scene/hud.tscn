@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbhpcwomc8kr6"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_olm6t"]
+
+[sub_resource type="FontVariation" id="FontVariation_kxhex"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ntxb"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqbbd"]
+font_size = 60
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_olm6t")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_kxhex")
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="WinnerLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 400.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_8ntxb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -293.5
+offset_right = 293.5
+offset_bottom = 400.0
+grow_horizontal = 2
+text = "Morpionny : 
+morpion's morpions"
+label_settings = SubResource("LabelSettings_vqbbd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
