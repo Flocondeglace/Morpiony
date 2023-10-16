@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs8ncphnopmbh"]
+
+[ext_resource type="Script" path="res://Scene/main.gd" id="1_lp73g"]
+[ext_resource type="PackedScene" uid="uid://bbhpcwomc8kr6" path="res://Scene/hud.tscn" id="2_4drmq"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lp73g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.796078, 0.788235, 0, 1)
+
+[node name="BigMorpion" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -293.0
+offset_right = 1136.0
+offset_bottom = 1107.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 3
+
+[node name="HUD" parent="." instance=ExtResource("2_4drmq")]
+
+[connection signal="start_game" from="HUD" to="." method="new_game"]

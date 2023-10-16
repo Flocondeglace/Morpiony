@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4e5urc4pptpp"]
+
+[ext_resource type="Script" path="res://Scene/mini_morpion.gd" id="1_ttv6t"]
+
+[node name="MiniMorpion" type="GridContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+script = ExtResource("1_ttv6t")
