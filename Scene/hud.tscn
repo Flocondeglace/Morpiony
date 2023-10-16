@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbhpcwomc8kr6"]
+[gd_scene load_steps=6 format=3 uid="uid://bbhpcwomc8kr6"]
 
-[ext_resource type="Script" path="res://HUD.gd" id="1_olm6t"]
+[ext_resource type="Script" path="res://Script/HUD.gd" id="1_u1efe"]
+[ext_resource type="ButtonGroup" uid="uid://bpxcqukfdv4mf" path="res://GroupButton/group_button_player.tres" id="2_haoto"]
 
 [sub_resource type="FontVariation" id="FontVariation_kxhex"]
 
@@ -11,7 +12,7 @@ font_size = 40
 font_size = 60
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_olm6t")
+script = ExtResource("1_u1efe")
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
@@ -54,5 +55,24 @@ morpion's morpions"
 label_settings = SubResource("LabelSettings_vqbbd")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player1" type="Button" parent="."]
+offset_left = 383.0
+offset_top = 451.0
+offset_right = 563.0
+offset_bottom = 501.0
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_haoto")
+text = "1 Player"
+
+[node name="Player2" type="Button" parent="."]
+offset_left = 583.0
+offset_top = 451.0
+offset_right = 763.0
+offset_bottom = 501.0
+toggle_mode = true
+button_group = ExtResource("2_haoto")
+text = "2 Players"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
