@@ -9,7 +9,7 @@ func _ready():
 
 func new_game():
 	#Positionnement
-	
+	morp = []
 	player_turn = 1
 	var compteur = 0
 	for i in range (0,3):
