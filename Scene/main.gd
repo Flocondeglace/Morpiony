@@ -1,15 +1,17 @@
 extends Node
 
 var minimorp_temp = preload("res://Scene/mini_morpion.tscn") 
+var humanPlayer
 var player_turn = 1
 var morp = []
 
 func _ready():
 	pass
 
-func new_game():
+func new_game(nbPlayer):
 	#Positionnement
 	morp = []
+	humanPlayer = nbPlayer
 	player_turn = 1
 	var compteur = 0
 	for i in range (0,3):

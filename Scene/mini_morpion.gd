@@ -45,19 +45,15 @@ func finish():
 	var icon_winner = get_child(0).case[win]
 	for ch in get_children():
 		remove_child(ch)
+	
 	var big_case = TextureRect.new()
 	push_warning(win)
 	big_case.set_texture(icon_winner)
-	#big_case.set_scale(Vector2(3,3))
-	
-	#big_case.size_flags_horizontal = Control.SIZE_FILL
-	#big_case.stretch_mode=1
+	columns = 1
 	add_child(big_case)
-	#get_child(0).set_size(Vector2(get_parent().get_size()))
 	get_child(0).size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	get_child(0).size_flags_vertical = Control.SIZE_EXPAND_FILL
-	#get_child(0).size_flags_stretch_ratio = 100
-	#fit_child_in_rect(get_child(0),get_rect())
+
 	
 func check_winner():
 	for i in range (1,3):

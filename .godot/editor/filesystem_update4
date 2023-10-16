@@ -1,2 +1,6 @@
 res://Scene/main.tscn
 res://Scene/main.gd
+res://Scene/hud.tscn
+res://Script/HUD.gd
+res://Scene/mini_morpion.tscn
+res://Scene/mini_morpion.gd

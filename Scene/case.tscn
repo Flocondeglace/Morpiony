@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk5m7w0bvoig3"]
 
-[ext_resource type="Script" path="res://Case.gd" id="1_mooev"]
+[ext_resource type="Script" path="res://Script/Case.gd" id="1_mooev"]
 
 [node name="Case" type="Button"]
 custom_minimum_size = Vector2(2, 2)
