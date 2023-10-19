@@ -35,6 +35,11 @@ func new_game(nbPlayer):
 	let_all_choices()
 
 func game_finished(num_winner):
+	var timerFin = Timer.new()
+	add_child(timerFin)
+	timerFin.start(3)
+	await timerFin.timeout
+	timerFin.queue_free()
 	for ch in $BigMorpion.get_children() :
 		$BigMorpion.remove_child(ch)
 	$HUD.end_of_game(num_winner)
