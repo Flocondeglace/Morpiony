@@ -39,8 +39,8 @@ func _process(delta):
 			light.set_energy(en - 0.05)
 
 func start_turn(player_turn):
-	set_case_accessible(true)
 	current_player = player_turn
+	set_case_accessible(true)
 
 func finish_turn():
 	set_case_accessible(false)
