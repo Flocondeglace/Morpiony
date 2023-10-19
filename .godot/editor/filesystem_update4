@@ -1,6 +1,8 @@
 res://Scene/main.tscn
-res://Scene/main.gd
+res://GroupButton/group_button_player.tres
 res://Scene/hud.tscn
-res://Script/HUD.gd
 res://Scene/mini_morpion.tscn
+res://Scene/case.tscn
+res://Scene/Computer.gd
+res://Scene/main.gd
 res://Scene/mini_morpion.gd

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs8ncphnopmbh"]
+[gd_scene load_steps=4 format=3 uid="uid://cs8ncphnopmbh"]
 
 [ext_resource type="Script" path="res://Scene/main.gd" id="1_lp73g"]
 [ext_resource type="PackedScene" uid="uid://bbhpcwomc8kr6" path="res://Scene/hud.tscn" id="2_4drmq"]
+[ext_resource type="Script" path="res://Scene/Computer.gd" id="3_60ddj"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lp73g")
@@ -35,4 +36,10 @@ columns = 3
 
 [node name="HUD" parent="." instance=ExtResource("2_4drmq")]
 
+[node name="Computer" type="Node2D" parent="."]
+script = ExtResource("3_60ddj")
+
+[node name="StupideComputer" type="Node2D" parent="Computer"]
+
+[connection signal="return_menu" from="HUD" to="." method="_on_hud_return_menu"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

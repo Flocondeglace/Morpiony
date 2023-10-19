@@ -5,11 +5,11 @@
 
 [sub_resource type="FontVariation" id="FontVariation_kxhex"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_8ntxb"]
-font_size = 40
-
 [sub_resource type="LabelSettings" id="LabelSettings_vqbbd"]
 font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ntxb"]
+font_size = 40
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_u1efe")
@@ -30,18 +30,6 @@ theme_override_fonts/font = SubResource("FontVariation_kxhex")
 theme_override_font_sizes/font_size = 60
 text = "Start"
 
-[node name="WinnerLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
-offset_bottom = 400.0
-grow_horizontal = 2
-label_settings = SubResource("LabelSettings_8ntxb")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TitleLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -57,9 +45,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player1" type="Button" parent="."]
-offset_left = 383.0
+offset_left = 375.0
 offset_top = 451.0
-offset_right = 563.0
+offset_right = 565.0
 offset_bottom = 501.0
 toggle_mode = true
 button_pressed = true
@@ -69,10 +57,62 @@ text = "1 Player"
 [node name="Player2" type="Button" parent="."]
 offset_left = 583.0
 offset_top = 451.0
-offset_right = 763.0
+offset_right = 773.0
 offset_bottom = 501.0
 toggle_mode = true
 button_group = ExtResource("2_haoto")
 text = "2 Players"
 
+[node name="Menu" type="Button" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+
+[node name="Restart" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="WinLayer" type="CanvasLayer" parent="."]
+
+[node name="WinnerLabel" type="Label" parent="WinLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 400.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_8ntxb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Button" parent="WinLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -268.0
+offset_right = 200.0
+offset_bottom = -218.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="WinLayer/Menu" to="." method="_on_menu_pressed"]

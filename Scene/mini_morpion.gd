@@ -3,14 +3,21 @@ extends GridContainer
 signal minimorpion_played
 
 var minimorp = []
+var cdispo = []
 var win
 var case_temp = preload("res://Scene/case.tscn")
+
+#light
+var texture_light = preload("res://Image/2d_lights_and_shadows_neutral_point_light.webp")
+var light
+
 var num
 var current_player
+var beffect = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	win = 0
+	win = 3
 	#remove_child($Case)
 	for i in range (0,3):
 		#minimorp.append([])
@@ -26,7 +33,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if beffect :
+		var en = light.get_energy()
+		if (en >= 0.01):
+			light.set_energy(en - 0.05)
 
 func start_turn(player_turn):
 	set_case_accessible(true)
@@ -37,12 +47,16 @@ func finish_turn():
 
 ## boolean b : true si on veut les cases accessibles, false sinon
 func set_case_accessible(b):
-	for case in minimorp:
-		if case.win == 0 :
-			case.set_disabled(!b)
+	cdispo = minimorp.filter(func(case): return case.win == 0)
+	for case in cdispo :
+		case.set_disabled(!b)
+	#for case in minimorp:
+	#	if case.win == 0 :
+	#		cdispo.append(case)
+	#		case.set_disabled(!b)
 
 func finish():
-	var icon_winner = get_child(0).case[win]
+	var icon_winner = get_child(0).case[win%3]
 	for ch in get_children():
 		remove_child(ch)
 	
@@ -53,6 +67,25 @@ func finish():
 	add_child(big_case)
 	get_child(0).size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	get_child(0).size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
+	effect_finish()
+
+func effect_finish():
+	var lightTimer = Timer.new()
+	beffect = true
+	add_child(lightTimer)
+	lightTimer.start()
+	light = PointLight2D.new()
+	light.set_texture(texture_light)
+	light.set_texture_offset(Vector2(size)/2)
+	light.set_texture_scale(2)
+	add_child(light)
+	await lightTimer.timeout
+	beffect = false
+	lightTimer.queue_free()
+	light.queue_free()
+	
+	
 
 	
 func check_winner():
@@ -98,7 +131,6 @@ func check_winner_p(player):
 
 	if (diag1 == 3 || diag2 == 3):
 		return true
-	push_warning("nb dans diag: " + str(diag1))
 	return false
 
 
