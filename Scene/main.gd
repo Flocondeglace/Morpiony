@@ -4,12 +4,19 @@ var minimorp_temp = preload("res://Scene/mini_morpion.tscn")
 var humanPlayer
 var player_turn = 1
 var morp = []
+var morpdispo = []
+var couleur = [Color(Color.CADET_BLUE),Color(Color.ROSY_BROWN)]
+
 
 func _ready():
 	pass
 
+func _process(delta):
+	if Input.is_action_pressed("escape"):
+		get_tree().quit()
+
 func new_game(nbPlayer):
-	#Positionnement
+	clear_game()
 	morp = []
 	humanPlayer = nbPlayer
 	player_turn = 1
@@ -34,25 +41,39 @@ func game_finished(num_winner):
 
 func let_all_choices():
 	for m in morp:
-		if m.win == 0:
+		if m.win == 3:
 			m.start_turn(player_turn)
 
 func let_none_choices():
 	for m in morp:
 		m.finish_turn()
+		
+func change_player():
+	player_turn = 1 + player_turn%2
+
+func computer_play():
+	if (humanPlayer == 1 && player_turn == 2):
+		var liste = []
+		for mini in morpdispo:
+			liste.append(mini.cdispo)
+		var choice = $Computer.play(player_turn,morp,liste,morpdispo)
 
 func _on_mini_morpion_minimorpion_played(played,pos):
 	var morp_played = morp[played]
+	morpdispo = []
 	morp_played.check_winner()
 	push_warning(played)
-	if (morp_played.win != 0):
+	if (morp_played.win != 3):
 		push_warning('wiiiin')
-	player_turn = 1 + player_turn%2
-	push_warning("player " + str(player_turn))
+	change_player()
+	
+	change_color()
 	let_none_choices()
-	if (morp[pos].win!=0) :
+	if (morp[pos].win!=3) :
 		let_all_choices()
+		morpdispo = morp
 	else :
+		morpdispo.append(morp[pos])
 		morp[pos].start_turn(player_turn)
 	if (check_egalite_big()):
 		game_finished(0)
@@ -60,11 +81,15 @@ func _on_mini_morpion_minimorpion_played(played,pos):
 		game_finished(1)
 	elif (check_winner_big(2)):
 		game_finished(2)
+	computer_play()
+
+func change_color():
+	$ColorRect.color = couleur[player_turn - 1]
 
 func check_egalite_big():
 	var complet = 0
 	for m in morp:
-		if (m.win != 0):
+		if (m.win != 3):
 			complet +=1
 	if complet == 9 :
 		return true
@@ -95,3 +120,10 @@ func check_winner_big(player):
 	if (diag1 == 3 || diag2 == 3):
 		return true
 	return false
+
+func clear_game():
+	for ch in $BigMorpion.get_children():
+		$BigMorpion.remove_child(ch)
+
+func _on_hud_return_menu():
+	clear_game()
