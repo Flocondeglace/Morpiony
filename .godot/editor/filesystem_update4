@@ -6,3 +6,4 @@ res://Scene/case.tscn
 res://Scene/Computer.gd
 res://Scene/main.gd
 res://Scene/mini_morpion.gd
+res://Script/Case.gd

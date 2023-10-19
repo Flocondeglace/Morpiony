@@ -17,7 +17,7 @@ func _ready():
 	win = 0
 	set_button_icon(case[0])
 
-func set_piece(numPlayer,pos):
+func set_piece(numPlayer):
 	set_button_icon(case[numPlayer])
 	win = numPlayer
 	has_play.emit(pos)
@@ -25,5 +25,7 @@ func set_piece(numPlayer,pos):
 
 func _on_pressed():
 	#set_piece(get_parent().get_parent().get_parent().get_parent().player_turn)
-	
-	set_piece(get_parent().current_player,pos)
+	var player = get_parent().current_player
+	var nbHuman = get_parent().nbHuman
+	if (nbHuman == 2 || player == 1):
+		set_piece(get_parent().current_player)
