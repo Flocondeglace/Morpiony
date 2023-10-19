@@ -829,7 +829,7 @@ function createExportWrapper(name, fixedasm) {
 
 var wasmBinaryFile;
 
-wasmBinaryFile = "godot.web.template_debug.wasm32.dlink.wasm";
+wasmBinaryFile = "godot.web.template_release.wasm32.dlink.wasm";
 
 if (!isDataURI(wasmBinaryFile)) {
  wasmBinaryFile = locateFile(wasmBinaryFile);
@@ -3972,7 +3972,7 @@ var PThread = {
   });
  },
  allocateUnusedWorker: function() {
-  var pthreadMainJs = locateFile("godot.web.template_debug.wasm32.dlink.worker.js");
+  var pthreadMainJs = locateFile("godot.web.template_release.wasm32.dlink.worker.js");
   PThread.unusedWorkers.push(new Worker(pthreadMainJs));
  },
  getNewWorker: function() {
