@@ -81,7 +81,8 @@ func _on_mini_morpion_minimorpion_played(played,pos):
 		game_finished(1)
 	elif (check_winner_big(2)):
 		game_finished(2)
-	computer_play()
+	else:
+		computer_play()
 
 func change_color():
 	$ColorRect.color = couleur[player_turn - 1]
