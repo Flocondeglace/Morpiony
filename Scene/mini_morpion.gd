@@ -57,7 +57,7 @@ func set_case_accessible(b):
 	#		case.set_disabled(!b)
 
 func finish():
-	var icon_winner = get_child(0).case[win%3]
+	var icon_winner = minimorp[0].case[win%3]
 	for ch in get_children():
 		remove_child(ch)
 	
