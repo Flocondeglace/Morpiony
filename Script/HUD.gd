@@ -35,8 +35,8 @@ func _on_start_button_pressed():
 		nbPlayer = 1
 		start_game.emit(1)
 	else :
-		nbPlayer = 0
-		start_game.emit(0)
+		nbPlayer = 2
+		start_game.emit(2)
 
 func end_of_game(num_player):
 	desact_button_game()

@@ -56,7 +56,7 @@ func computer_play():
 	var liste = []
 	for mini in morpdispo:
 		liste.append(mini.cdispo)
-	var choice = $Computer.play(player_turn,morp,liste,morpdispo)
+	var choice = $Computer.play(player_turn,morp, liste,morpdispo)
 
 func computer_thinking():
 	if (humanPlayer == 1 && player_turn == 2):
