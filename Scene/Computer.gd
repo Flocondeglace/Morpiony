@@ -29,7 +29,7 @@ func play_random_list(dispo):
 	
 func click(numPlayer,case):
 	case.set_piece(numPlayer)
-	case.emit_signal("pressed")
+	#case.emit_signal("pressed")
 
 # Prends en entrée la liste des cases dispo à côté desquelles il y a une case de rempli gagnante
 func play_next_to(dispo):
