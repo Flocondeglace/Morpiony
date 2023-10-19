@@ -13,6 +13,7 @@ var light
 
 var num
 var current_player
+var nbHuman
 var beffect = false
 
 # Called when the node enters the scene tree for the first time.

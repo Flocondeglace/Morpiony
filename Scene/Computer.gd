@@ -18,7 +18,7 @@ func play(numPlayer,morp,dispo,morplegal):
 		choix = play_next_to(hasneighbour)
 		if choix == null:
 			choix = play_random(dispo)
-	click(choix)
+	click(numPlayer,choix)
 	
 
 func play_random(dispo):
@@ -27,7 +27,8 @@ func play_random(dispo):
 func play_random_list(dispo):
 	return dispo.pick_random()
 	
-func click(case):
+func click(numPlayer,case):
+	case.set_piece(numPlayer)
 	case.emit_signal("pressed")
 
 # Prends en entrée la liste des cases dispo à côté desquelles il y a une case de rempli gagnante

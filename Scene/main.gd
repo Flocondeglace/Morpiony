@@ -26,6 +26,7 @@ func new_game(nbPlayer):
 			var minimorp = minimorp_temp.instantiate()
 			#minimorp.get_child(1).num = compteur
 			minimorp.num = compteur
+			minimorp.nbHuman = humanPlayer
 			#morp[i].append(minimorp.get_child(1))
 			morp.append(minimorp)
 			$BigMorpion.add_child(minimorp)
@@ -52,11 +53,20 @@ func change_player():
 	player_turn = 1 + player_turn%2
 
 func computer_play():
+	var liste = []
+	for mini in morpdispo:
+		liste.append(mini.cdispo)
+	var choice = $Computer.play(player_turn,morp,liste,morpdispo)
+
+func computer_thinking():
 	if (humanPlayer == 1 && player_turn == 2):
-		var liste = []
-		for mini in morpdispo:
-			liste.append(mini.cdispo)
-		var choice = $Computer.play(player_turn,morp,liste,morpdispo)
+		var think_timer = Timer.new()
+		add_child(think_timer)
+		think_timer.start(0.5)
+		await think_timer.timeout
+		think_timer.queue_free()
+		computer_play()
+	
 
 func _on_mini_morpion_minimorpion_played(played,pos):
 	var morp_played = morp[played]
@@ -82,7 +92,8 @@ func _on_mini_morpion_minimorpion_played(played,pos):
 	elif (check_winner_big(2)):
 		game_finished(2)
 	else:
-		computer_play()
+		computer_thinking()
+		#computer_play()
 
 func change_color():
 	$ColorRect.color = couleur[player_turn - 1]
