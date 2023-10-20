@@ -22,6 +22,8 @@ func set_piece(numPlayer):
 	win = numPlayer
 	has_play.emit(pos)
 	set_disabled(true)
+	
+	push_warning("pos :" + str(pos))
 
 func _on_pressed():
 	#set_piece(get_parent().get_parent().get_parent().get_parent().player_turn)

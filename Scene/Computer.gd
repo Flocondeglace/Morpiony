@@ -10,16 +10,23 @@ func play(numPlayer,morp,dispo,morplegal):
 	var choix
 	hasneighbour = []
 	# semi smart attaque
+	push_warning("Attaque")
 	for minimorplegal in morplegal:
 		choix = play_align_3(numPlayer,minimorplegal.minimorp,true)
 		if choix != null:
 			break
 	if choix == null:
+		push_warning("Defense")
 		for minimorplegal in morplegal:
 			choix = play_def(numPlayer,minimorplegal.minimorp)
+			if choix != null:
+				push_warning("break")
+				break
 	if choix==null:
+		push_warning("Voisin")
 		choix = play_next_to(hasneighbour)
 	if choix == null:
+		push_warning("Random")
 		choix = play_random(dispo)
 	click(numPlayer,choix)
 	
@@ -32,15 +39,16 @@ func play_random_list(dispo):
 	
 func click(numPlayer,case):
 	case.set_piece(numPlayer)
-	#case.emit_signal("pressed")
 
 # Prends en entrée la liste des cases dispo à côté desquelles il y a une case de rempli gagnante
 func play_next_to(dispo):
-	play_random_list(dispo)
+	if dispo != []:
+		play_random_list(dispo)
+	else :
+		return null
 	
 
 func play_align_3(numPlayer,cases,conservation_voisins):
-	push_warning("biiis")
 	var wincases = cases.filter(func (case): return case.win == numPlayer)
 	var freecases = cases.filter(func (case): return case.win == 0)
 	var wincases_ord_line = []
@@ -58,25 +66,26 @@ func play_align_3(numPlayer,cases,conservation_voisins):
 		return freediag2[0]
 	
 	var k : int = 3
-	for i in range (0,2):
+	for i in range (0,3):
 		wincases_ord_column.append(wincases.filter(func (case): return case.pos%k == i))
 		wincases_ord_line.append(wincases.filter(func (case): return case.pos/k == i))
 		freecases_ord_column.append(freecases.filter(func (case): return case.pos%k == i))
 		freecases_ord_line.append(freecases.filter(func (case): return case.pos/k == i))
-	for i in range (0,2):
+	for i in range (0,3):
 		if (wincases_ord_line[i].size() == 2 && freecases_ord_line[i].size() == 1):
-			push_warning("liiigne")
+			push_warning("liiigne "+ str(i)+ " vpos : "+str(freecases_ord_line[i][0].pos))
 			return freecases_ord_line[i][0]
 		if (wincases_ord_column[i].size() == 2 && freecases_ord_column[i].size() == 1):
-			push_warning("colooonne")
+			push_warning("colooone "+ str(i)+ " vpos : " + str(freecases_ord_column[i][0].pos))
 			return freecases_ord_column[i][0]
 		if conservation_voisins :
 			if (wincases_ord_line[i].size()==1 && freecases_ord_line[i].size()>=1):
 				hasneighbour.append_array(freecases_ord_line[i])
 			if (wincases_ord_column[i].size()==1 && freecases_ord_column[i].size()>=1):
 				hasneighbour.append_array(freecases_ord_column[i])
+	push_warning("rien trouvé")
 	return null
 
 
 func play_def(numPlayer,cases):
-	play_align_3(numPlayer%2 +1, cases,false)
+	return play_align_3(numPlayer%2 +1, cases,false)
