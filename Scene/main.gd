@@ -5,7 +5,7 @@ var humanPlayer
 var player_turn = 1
 var morp = []
 var morpdispo = []
-var couleur = [Color(Color.CADET_BLUE),Color(Color.ROSY_BROWN)]
+var couleur = [Color(Color.CADET_BLUE,1),Color(Color.ROSY_BROWN,1)]
 
 
 func _ready():

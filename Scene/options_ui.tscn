@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2d1fjmfpq5sp"]
+
+[ext_resource type="Theme" uid="uid://ynoneli0cfjg" path="res://Theme/halloween_theme.tres" id="1_877jn"]
+
+[node name="OptionsUI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_877jn")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme = ExtResource("1_877jn")
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Difficulty" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -37.0
+offset_right = 300.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DifficultyLabel" type="Label" parent="Panel/Difficulty"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Difficulty :"
+vertical_alignment = 1
+
+[node name="DifficultyButton" type="OptionButton" parent="Panel/Difficulty"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+item_count = 3
+selected = 0
+popup/item_0/text = "Stupide"
+popup/item_0/id = 0
+popup/item_1/text = "Aggressif"
+popup/item_1/id = 1
+popup/item_2/text = "Defenssif"
+popup/item_2/id = 2

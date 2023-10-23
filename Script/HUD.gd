@@ -3,35 +3,38 @@ extends CanvasLayer
 signal start_game
 signal return_menu
 var nbPlayer
+var player1
+var player2
+var start_button
 
 func _ready():
+	player1 = get_node("StartMenuButton/GridContainer/Player1")
+	player2 = get_node("StartMenuButton/GridContainer/Player2")
+	start_button = get_node("StartMenuButton/StartButton")
 	$WinLayer.hide()
 	$Restart.hide()
 	$Menu.hide()
+	$OptionsUI.hide()
 
 func desact_button_game():
 	$Menu.hide()
 	$Restart.hide()
 
 func desact_menu_start():
-	$StartButton.hide()
+	$StartMenuButton.hide()
 	$TitleLabel.hide()
 	$WinLayer.hide()
-	$Player1.hide()
-	$Player2.hide()
 	
 func act_menu_start():
-	$StartButton.show()
-	$StartButton.text = 'Start'
+	start_button.text = 'Start'
+	$StartMenuButton.show()
 	$TitleLabel.show()
-	$Player1.show()
-	$Player2.show()
 
 func _on_start_button_pressed():
 	desact_menu_start()
 	$Restart.show()
 	$Menu.show()
-	if ($Player1.button_pressed):
+	if (player1.button_pressed):
 		nbPlayer = 1
 		start_game.emit(1)
 	else :
@@ -40,10 +43,8 @@ func _on_start_button_pressed():
 
 func end_of_game(num_player):
 	desact_button_game()
-	$StartButton.text = "Restart"
-	$StartButton.show()
-	$Player1.show()
-	$Player2.show()
+	start_button.text = "Restart"
+	$StartMenuButton.show()
 	if (num_player != 3):
 		$WinLayer/WinnerLabel.text = "Player " + str(num_player%2 + 1) + " loose :)"
 	else :

@@ -1,7 +1,12 @@
 res://Scene/main.tscn
+res://Theme/style_box/orange_style_box_2.tres
+res://Theme/halloween_theme.tres
 res://GroupButton/group_button_player.tres
-res://Scene/Computer.gd
 res://Scene/hud.tscn
 res://Scene/mini_morpion.tscn
 res://Scene/case.tscn
-res://Script/Case.gd
+res://Scene/options.tscn
+res://Scene/options_ui.tscn
+res://Script/HUD.gd
+res://Scene/hud_general.gd
+res://Scene/main.gd

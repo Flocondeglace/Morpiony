@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://ynoneli0cfjg"]
+
+[ext_resource type="FontFile" uid="uid://yyxsdkljs3nd" path="res://Font/Skull-Story.ttf" id="1_c6b7p"]
+[ext_resource type="StyleBox" uid="uid://dxciufybqruns" path="res://Theme/style_box/orange_style_box.tres" id="1_cgqsn"]
+[ext_resource type="StyleBox" uid="uid://cyr24ucpfawko" path="res://Theme/style_box/orange_style_box_2.tres" id="2_f86x2"]
+
+[resource]
+default_font_size = 64
+Label/fonts/font = ExtResource("1_c6b7p")
+Panel/styles/panel = ExtResource("1_cgqsn")
+PanelContainer/styles/panel = ExtResource("2_f86x2")

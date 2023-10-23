@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dt7k81ypwwgii"]
+
+[node name="Options" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.996078, 0.698039, 1, 1)
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComputerStrategy" type="MenuButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -15.5
+offset_right = 98.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Stratégie de l'ordinateur"
+item_count = 3
+popup/item_0/text = "Stupide"
+popup/item_0/checkable = 2
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_1/text = "Aggressive"
+popup/item_1/checkable = 2
+popup/item_1/id = 1
+popup/item_2/text = "Défenssive"
+popup/item_2/checkable = 2
+popup/item_2/id = 2
