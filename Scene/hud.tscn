@@ -1,36 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbhpcwomc8kr6"]
+[gd_scene load_steps=9 format=3 uid="uid://bbhpcwomc8kr6"]
 
+[ext_resource type="Script" path="res://Scene/hud_general.gd" id="1_mo8us"]
 [ext_resource type="Script" path="res://Script/HUD.gd" id="1_u1efe"]
+[ext_resource type="Theme" uid="uid://ynoneli0cfjg" path="res://Theme/halloween_theme.tres" id="2_6dje8"]
 [ext_resource type="ButtonGroup" uid="uid://bpxcqukfdv4mf" path="res://GroupButton/group_button_player.tres" id="2_haoto"]
+[ext_resource type="PackedScene" uid="uid://d2d1fjmfpq5sp" path="res://Scene/options_ui.tscn" id="3_60fqp"]
 
 [sub_resource type="FontVariation" id="FontVariation_kxhex"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_vqbbd"]
-font_size = 60
+[sub_resource type="LabelSettings" id="LabelSettings_ru4rp"]
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ntxb"]
 font_size = 40
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_mo8us")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_6dje8")
+
+[node name="HUDcanva" type="CanvasLayer" parent="Control"]
 script = ExtResource("1_u1efe")
 
-[node name="StartButton" type="Button" parent="."]
-anchors_preset = 7
+[node name="StartMenuButton" type="GridContainer" parent="Control/HUDcanva"]
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -120.0
-offset_right = 200.0
-offset_bottom = -20.0
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -96.0
+offset_right = 273.0
+offset_bottom = 96.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme = ExtResource("2_6dje8")
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 5
+
+[node name="GridContainer" type="GridContainer" parent="Control/HUDcanva/StartMenuButton"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 5
+columns = 2
+
+[node name="Player1" type="Button" parent="Control/HUDcanva/StartMenuButton/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_haoto")
+text = "1 Player"
+icon_alignment = 1
+
+[node name="Player2" type="Button" parent="Control/HUDcanva/StartMenuButton/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_haoto")
+text = "2 Players"
+
+[node name="StartButton" type="Button" parent="Control/HUDcanva/StartMenuButton"]
+layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_kxhex")
 theme_override_font_sizes/font_size = 60
 text = "Start"
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="Control/HUDcanva"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -40,30 +84,11 @@ offset_bottom = 400.0
 grow_horizontal = 2
 text = "Morpionny : 
 morpion's morpions"
-label_settings = SubResource("LabelSettings_vqbbd")
+label_settings = SubResource("LabelSettings_ru4rp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1" type="Button" parent="."]
-offset_left = 375.0
-offset_top = 451.0
-offset_right = 565.0
-offset_bottom = 501.0
-toggle_mode = true
-button_pressed = true
-button_group = ExtResource("2_haoto")
-text = "1 Player"
-
-[node name="Player2" type="Button" parent="."]
-offset_left = 583.0
-offset_top = 451.0
-offset_right = 773.0
-offset_bottom = 501.0
-toggle_mode = true
-button_group = ExtResource("2_haoto")
-text = "2 Players"
-
-[node name="Menu" type="Button" parent="."]
+[node name="Menu" type="Button" parent="Control/HUDcanva"]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 180.0
@@ -71,7 +96,7 @@ offset_bottom = 70.0
 theme_override_font_sizes/font_size = 30
 text = "Menu"
 
-[node name="Restart" type="Button" parent="."]
+[node name="Restart" type="Button" parent="Control/HUDcanva"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -83,9 +108,9 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Restart"
 
-[node name="WinLayer" type="CanvasLayer" parent="."]
+[node name="WinLayer" type="CanvasLayer" parent="Control/HUDcanva"]
 
-[node name="WinnerLabel" type="Label" parent="WinLayer"]
+[node name="WinnerLabel" type="Label" parent="Control/HUDcanva/WinLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -97,22 +122,27 @@ label_settings = SubResource("LabelSettings_8ntxb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menu" type="Button" parent="WinLayer"]
+[node name="Menu" type="Button" parent="Control/HUDcanva/WinLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -268.0
-offset_right = 200.0
-offset_bottom = -218.0
+offset_left = -225.0
+offset_top = -230.0
+offset_right = 225.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Menu"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="WinLayer/Menu" to="." method="_on_menu_pressed"]
+[node name="OptionsUI" parent="Control/HUDcanva" instance=ExtResource("3_60fqp")]
+
+[connection signal="return_menu" from="Control/HUDcanva" to="." method="_on_hud_canva_return_menu"]
+[connection signal="start_game" from="Control/HUDcanva" to="." method="_on_hud_canva_start_game"]
+[connection signal="pressed" from="Control/HUDcanva/StartMenuButton/StartButton" to="Control/HUDcanva" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/HUDcanva/Menu" to="Control/HUDcanva" method="_on_menu_pressed"]
+[connection signal="pressed" from="Control/HUDcanva/Restart" to="Control/HUDcanva" method="_on_restart_pressed"]
+[connection signal="pressed" from="Control/HUDcanva/WinLayer/Menu" to="." method="_on_menu_pressed"]

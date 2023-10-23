@@ -27,7 +27,22 @@ func play_strat_attaque():
 		push_warning("Aleatoire")
 		liste_choix.append(play_random(cases_disponibles))
 	return play_random_list(liste_choix)
-	
+
+func play_strat_def():
+	hasneighbour = []
+	liste_choix = []
+	push_warning("Defense")
+	liste_choix = play_def()
+	if liste_choix == []:
+		push_warning("Defense")
+		liste_choix = play_attack()
+	if liste_choix == []:
+		push_warning("Voisin")
+		liste_choix = hasneighbour
+	if liste_choix == []:
+		push_warning("Aleatoire")
+		liste_choix.append(play_random(cases_disponibles))
+	return play_random_list(liste_choix)
 
 func play(vnum_player,morp,dispo,morplegal):
 	num_player = vnum_player
@@ -38,7 +53,10 @@ func play(vnum_player,morp,dispo,morplegal):
 	# choix = play_strat_stupide()
 
 	# semi smart attaque
-	choix = play_strat_attaque()
+	#choix = play_strat_attaque()
+	
+	# semi smart defense
+	choix = play_strat_def()
 	
 	click(choix)
 	

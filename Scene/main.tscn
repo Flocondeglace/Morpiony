@@ -1,11 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs8ncphnopmbh"]
+[gd_scene load_steps=6 format=3 uid="uid://cs8ncphnopmbh"]
 
 [ext_resource type="Script" path="res://Scene/main.gd" id="1_lp73g"]
 [ext_resource type="PackedScene" uid="uid://bbhpcwomc8kr6" path="res://Scene/hud.tscn" id="2_4drmq"]
+[ext_resource type="Theme" uid="uid://ynoneli0cfjg" path="res://Theme/halloween_theme.tres" id="2_ri4na"]
 [ext_resource type="Script" path="res://Scene/Computer.gd" id="3_60ddj"]
+[ext_resource type="StyleBox" uid="uid://cyr24ucpfawko" path="res://Theme/style_box/orange_style_box_2.tres" id="3_s5p0y"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lp73g")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ri4na")
+theme_override_styles/panel = ExtResource("3_s5p0y")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -13,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.796078, 0.788235, 0, 1)
+color = Color(1, 1, 1, 0)
 
 [node name="BigMorpion" type="GridContainer" parent="."]
 anchors_preset = 8
@@ -41,5 +52,5 @@ script = ExtResource("3_60ddj")
 
 [node name="StupideComputer" type="Node2D" parent="Computer"]
 
-[connection signal="return_menu" from="HUD" to="." method="_on_hud_return_menu"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="menu" from="HUD" to="." method="_on_hud_return_menu"]
+[connection signal="start" from="HUD" to="." method="new_game"]
