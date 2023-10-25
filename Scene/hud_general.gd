@@ -18,3 +18,6 @@ func _on_hud_canva_start_game(nbplayer):
 
 func _on_hud_canva_return_menu():
 	menu.emit()
+
+func _on_hud_canva_continue_game():
+	get_parent().select_button()

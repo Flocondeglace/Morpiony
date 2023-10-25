@@ -1,24 +1,34 @@
 extends Node
 
 var minimorp_temp = preload("res://Scene/mini_morpion.tscn") 
-var humanPlayer
+var nbHumanPlayer
 var player_turn = 1
 var morp = []
 var morpdispo = []
 var couleur = [Color(Color.CADET_BLUE,1),Color(Color.ROSY_BROWN,1)]
-
+var hud
+# position du morpion dans lequel le joueur doit jouer
+var pos
 
 func _ready():
-	pass
+	hud = $HUD/Control/HUDcanva
 
 func _process(delta):
 	if Input.is_action_pressed("escape"):
 		get_tree().quit()
-
+		
+	if hud.state == "game":
+		if Input.is_action_pressed("player1") && player_turn == 1:
+			#push_warning($BigMorpion.get_viewport().gui_get_focus_owner().name)
+			$BigMorpion.get_viewport().gui_get_focus_owner()._on_pressed()
+		if Input.is_action_pressed("player2") && player_turn == 2:
+			$BigMorpion.get_viewport().gui_get_focus_owner()._on_pressed()
+	
+		
 func new_game(nbPlayer):
 	clear_game()
 	morp = []
-	humanPlayer = nbPlayer
+	nbHumanPlayer = nbPlayer
 	player_turn = 1
 	var compteur = 0
 	for i in range (0,3):
@@ -26,12 +36,13 @@ func new_game(nbPlayer):
 			var minimorp = minimorp_temp.instantiate()
 			#minimorp.get_child(1).num = compteur
 			minimorp.num = compteur
-			minimorp.nbHuman = humanPlayer
+			minimorp.nbHuman = nbHumanPlayer
 			#morp[i].append(minimorp.get_child(1))
 			morp.append(minimorp)
 			$BigMorpion.add_child(minimorp)
 			morp[3*i + j].minimorpion_played.connect(_on_mini_morpion_minimorpion_played)
 			compteur +=1
+	morp[0].minimorp[0].grab_focus()
 	let_all_choices()
 
 func game_finished(num_winner):
@@ -42,7 +53,7 @@ func game_finished(num_winner):
 	timerFin.queue_free()
 	for ch in $BigMorpion.get_children() :
 		$BigMorpion.remove_child(ch)
-	$HUD.end_of_game(num_winner)
+	hud.end_of_game(num_winner)
 	
 
 func let_all_choices():
@@ -64,7 +75,7 @@ func computer_play():
 	var choice = $Computer.play(player_turn,morp, liste,morpdispo)
 
 func computer_thinking():
-	if (humanPlayer == 1 && player_turn == 2):
+	if (nbHumanPlayer == 1 && player_turn == 2):
 		var think_timer = Timer.new()
 		add_child(think_timer)
 		think_timer.start(0.5)

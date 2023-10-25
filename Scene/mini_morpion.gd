@@ -19,13 +19,9 @@ var beffect = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	win = 3
-	#remove_child($Case)
 	for i in range (0,3):
-		#minimorp.append([])
 		for j in range(0,3):
 			var case = case_temp.instantiate()
-			#case.scale = Vector2(0.1,0.1)
-			#minimorp[i].append(case)
 			minimorp.append(case)
 			case.pos = j + i*3
 			add_child(case)
@@ -42,6 +38,7 @@ func _process(delta):
 func start_turn(player_turn):
 	current_player = player_turn
 	set_case_accessible(true)
+	cdispo[0].grab_focus()
 
 func finish_turn():
 	set_case_accessible(false)
