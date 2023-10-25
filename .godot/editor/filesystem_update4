@@ -8,5 +8,7 @@ res://Scene/case.tscn
 res://Scene/options.tscn
 res://Scene/options_ui.tscn
 res://Script/HUD.gd
-res://Scene/hud_general.gd
 res://Scene/main.gd
+res://Script/Case.gd
+res://Scene/mini_morpion.gd
+res://Scene/hud_general.gd

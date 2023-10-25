@@ -1,11 +1,11 @@
+Label
+Panel
 CanvasLayer
 Control
 ColorRect
-Panel
 GridContainer
 Camera2D
 PanelContainer
-Label
 Node2D
 OptionButton
 RichTextLabel
