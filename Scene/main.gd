@@ -5,13 +5,27 @@ var nbHumanPlayer
 var player_turn = 1
 var morp = []
 var morpdispo = []
-var couleur = [Color(Color.CADET_BLUE,1),Color(Color.ROSY_BROWN,1)]
+
+## Couleur fond
+
+# Couleur normal
+# var couleur = [Color(Color.CADET_BLUE,1),Color(Color.ROSY_BROWN,1)]
+
+# Couleur halloween
+var couleur = [Color(Color.CORAL,0.4),Color(Color.DIM_GRAY,1)]
+
 var hud
+var current_player_rect
+var resultat_morpion
 # position du morpion dans lequel le joueur doit jouer
 var pos
+var case
 
 func _ready():
 	hud = $HUD/Control/HUDcanva
+	current_player_rect = $HUD/Control/HUDcanva/CurrentPlayer
+	resultat_morpion = $HUD/Control/HUDcanva/ResultatMorpion
+
 
 func _process(delta):
 	if Input.is_action_pressed("escape"):
@@ -43,16 +57,23 @@ func new_game(nbPlayer):
 			morp[3*i + j].minimorpion_played.connect(_on_mini_morpion_minimorpion_played)
 			compteur +=1
 	morp[0].minimorp[0].grab_focus()
+	case = morp[0].minimorp[0].case
+	current_player_rect.set_texture(case[player_turn])
 	let_all_choices()
 
 func game_finished(num_winner):
+	hud.state = "gameover"
+	#hud.game_over()
 	var timerFin = Timer.new()
 	add_child(timerFin)
 	timerFin.start(3)
 	await timerFin.timeout
 	timerFin.queue_free()
+	#resultat_morpion.add_child($BigMorpion)
 	for ch in $BigMorpion.get_children() :
 		$BigMorpion.remove_child(ch)
+		resultat_morpion.add_child(ch)
+	resultat_morpion.show()
 	hud.end_of_game(num_winner)
 	
 
@@ -60,6 +81,8 @@ func let_all_choices():
 	for m in morp:
 		if m.win == 3:
 			m.start_turn(player_turn)
+			push_warning(str(m.num) + " : pos all choices")
+			morpdispo.append(m)
 
 func let_none_choices():
 	for m in morp:
@@ -67,10 +90,12 @@ func let_none_choices():
 		
 func change_player():
 	player_turn = 1 + player_turn%2
+	current_player_rect.set_texture(case[player_turn])
 
 func computer_play():
 	var liste = []
 	for mini in morpdispo:
+		#push_warning(str(mini.num))
 		liste.append(mini.cdispo)
 	var choice = $Computer.play(player_turn,morp, liste,morpdispo)
 
@@ -88,7 +113,7 @@ func _on_mini_morpion_minimorpion_played(played,pos):
 	var morp_played = morp[played]
 	morpdispo = []
 	morp_played.check_winner()
-	push_warning(played)
+	#push_warning(played)
 	if (morp_played.win != 3):
 		push_warning('wiiiin')
 	change_player()
@@ -97,16 +122,19 @@ func _on_mini_morpion_minimorpion_played(played,pos):
 	let_none_choices()
 	if (morp[pos].win!=3) :
 		let_all_choices()
-		morpdispo = morp
 	else :
 		morpdispo.append(morp[pos])
 		morp[pos].start_turn(player_turn)
-	if (check_egalite_big()):
-		game_finished(0)
-	elif (check_winner_big(1)):
+	
+	if (check_winner_big(1)):
+		push_warning("player 1 win")
 		game_finished(1)
 	elif (check_winner_big(2)):
+		push_warning("player 2 win")
 		game_finished(2)
+	elif (check_egalite_big()):
+		push_warning("egaliteeeeeeeeeeeeeeeeee")
+		game_finished(0)
 	else:
 		computer_thinking()
 		#computer_play()
