@@ -79,6 +79,7 @@ func play_attack():
 func play_def():
 	var liste_choix_def = []
 	for mini in morpions_disponibles:
+		#push_warning(str(mini.num))
 		liste_choix_def += play_def_mini(mini.minimorp)
 	return liste_choix_def
 

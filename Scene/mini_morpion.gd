@@ -59,7 +59,7 @@ func finish():
 		remove_child(ch)
 	
 	var big_case = TextureRect.new()
-	push_warning(win)
+	#push_warning(win)
 	big_case.set_texture(icon_winner)
 	columns = 1
 	add_child(big_case)

@@ -21,3 +21,4 @@ func _on_hud_canva_return_menu():
 
 func _on_hud_canva_continue_game():
 	get_parent().select_button()
+

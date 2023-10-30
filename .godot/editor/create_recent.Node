@@ -1,9 +1,10 @@
+GridContainer
+TextureRect
 Label
 Panel
 CanvasLayer
 Control
 ColorRect
-GridContainer
 Camera2D
 PanelContainer
 Node2D
