@@ -1,0 +1,49 @@
+{
+    //// Des propriétés peuvent être supprimées, une valeur par défaut leur sera attribuées.
+
+    // Nom de votre jeu: tel qu'il sera affiché partout sur la borne.
+    // Pensez à vérifier que votre texte s'affiche en entier sur la borne.
+    "name": "Morpiony",
+
+    // Description de votre jeu: introduisez brièvement votre jeu et son but, le nom des participants, ...
+    // Pensez à vérifier que votre texte s'affiche en entier sur la borne.
+    "description":
+"Un morpion dans un morpion : jouer au morpion de manière classique mais pour gagner une case du grand morpion, gagnez le petit morpion ! Petite contrainte suplémentaire : l'endroit où on pose notre pion dans le petit morpion détermine le gros morpion dans lequel le joueur suivant devra jouer ! Si il ne reste pas de case disponible dans celui-ci, il peut jouer où il veut.
+
+Crée par Flocondeglace",
+
+    // Nombre de joueur: tag solo, coop, versus, ...
+    // Regarder dans LauncherBuilds/config.json les tags associés à des icônes spéciales.
+    "players": "1-2 joueurs",
+
+    // Genre: arcade, rythme, ...
+    // Regarder dans LauncherBuilds/config.json les tags associés à des icônes spéciales.
+    "genre": "puzzle",
+
+    // Collection: Listes, Jeux sous le sapin, ...
+    // Regarder dans LauncherBuilds/config.json les tags associés à des icônes spéciales.
+    // Optionnel: si laissé vide, n'apparaît pas.
+    "collection": "",
+
+    // Label spécial: chemin depuis LauncherMeta vers une icône à mettre en label flottant sur l'icône du jeu
+    // Utilisé pour les occasions spéciales (ex: tournoi). Laisser vide par défaut.
+    "specialLabelPath": "",
+
+    // Contrôles: les descriptions des touches utilisées par votre jeu
+    // Pensez à vérifier que votre texte s'affiche en entier sur la borne.
+    // Si laissé vide, n'apparaît pas.
+    "controlLJ": "se déplacer", // joystick gauche
+    "controlL1": "valider la case sélectionnée", // boutons gauches (numérotés gauche->droite, haut->bas)
+    "controlL2": "",
+    "controlL3": "pause",
+    "controlL4": "",
+    "controlL5": "",
+    "controlL6": "",
+    "controlRJ": "se déplacer", // joystick droit
+    "controlR1": "valider la case sélectionnée", // boutons droits (numérotés gauche->droite, haut->bas)
+    "controlR2": "",
+    "controlR3": "pause",
+    "controlR4": "",
+    "controlR5": "",
+    "controlR6": ""
+ }

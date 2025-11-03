@@ -9,3 +9,5 @@ default_font_size = 64
 Label/fonts/font = ExtResource("1_c6b7p")
 Panel/styles/panel = ExtResource("1_cgqsn")
 PanelContainer/styles/panel = ExtResource("2_f86x2")
+PopupPanel/styles/panel = ExtResource("1_cgqsn")
+RichTextLabel/font_sizes/normal_font_size = 35

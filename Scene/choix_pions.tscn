@@ -1,0 +1,153 @@
+[gd_scene load_steps=21 format=3 uid="uid://df14bxq5basr"]
+
+[ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="1_2ggui"]
+[ext_resource type="Script" path="res://Script/validation_choix_perso.gd" id="2_d7bi3"]
+[ext_resource type="PackedScene" uid="uid://7inc2vpnxgqs" path="res://Scene/button_pion.tscn" id="2_kw1rl"]
+[ext_resource type="Texture2D" uid="uid://caw4vrtamqla2" path="res://Image/Pions/7fault.png" id="3_dr4gg"]
+[ext_resource type="Texture2D" uid="uid://cveokkx1tkpev" path="res://Image/Pions/cartel.png" id="5_1nib2"]
+[ext_resource type="Texture2D" uid="uid://ju30mcnqaxe5" path="res://Image/Pions/7lan.png" id="5_uiu21"]
+[ext_resource type="Texture2D" uid="uid://b0mroa7n0pajl" path="res://Image/Pions/buffalo.png" id="6_msob0"]
+[ext_resource type="Texture2D" uid="uid://50auy0uydlxh" path="res://Image/Pions/chick.png" id="7_rja02"]
+[ext_resource type="Texture2D" uid="uid://cx306elbmh3ju" path="res://Image/Pions/chicken.png" id="8_r4y47"]
+[ext_resource type="Texture2D" uid="uid://br7fttdekc8e3" path="res://Image/Pions/cow.png" id="9_egryt"]
+[ext_resource type="Texture2D" uid="uid://bt3np8fen47l6" path="res://Image/Pions/elephant.png" id="10_qrv3o"]
+[ext_resource type="Texture2D" uid="uid://doq3hlj1xc5xn" path="res://Image/Pions/gorilla.png" id="11_j01qs"]
+[ext_resource type="Texture2D" uid="uid://mwt0j8ucim6q" path="res://Image/Pions/parrot.png" id="12_uv27a"]
+[ext_resource type="Texture2D" uid="uid://bx4327k0ep2r3" path="res://Image/Pions/penguin.png" id="13_05654"]
+[ext_resource type="Texture2D" uid="uid://4tds6lpi72ui" path="res://Image/Pions/rabbit.png" id="14_544tk"]
+[ext_resource type="Texture2D" uid="uid://p3cysoyvdddr" path="res://Image/Pions/zebra.png" id="15_tq1pb"]
+[ext_resource type="Texture2D" uid="uid://bd5sx4ur0sbs5" path="res://Image/Pions/pan7on.png" id="16_1x17n"]
+[ext_resource type="Texture2D" uid="uid://kkwf0mxwuy68" path="res://Image/Pions/gd7t.png" id="18_k6401"]
+[ext_resource type="Texture2D" uid="uid://c1hhxsfg83rsy" path="res://Image/Pions/capitoledulibre.png" id="19_lwo4c"]
+[ext_resource type="Texture2D" uid="uid://dd8ujhwi1ruj4" path="res://Image/Pions/capitoledulibre2.png" id="20_osbsf"]
+
+[node name="ChoixPions" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -610.0
+offset_top = -420.0
+offset_right = 610.0
+offset_bottom = 430.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2ggui")
+script = ExtResource("2_d7bi3")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Joueur" type="Label" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("1_2ggui")
+theme_override_constants/outline_size = 4
+text = "Joueur 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Il est désormais temps de choisir le pion que vous allez incarner au cours de cette partie !"
+fit_content = true
+
+[node name="GridContainer" type="GridContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 6
+
+[node name="7Fault" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("3_dr4gg")
+
+[node name="Cartel" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("5_1nib2")
+
+[node name="7lan" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("5_uiu21")
+
+[node name="Buffalo" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("6_msob0")
+
+[node name="Chick" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("7_rja02")
+
+[node name="Chicken" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("8_r4y47")
+
+[node name="Cow" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("9_egryt")
+
+[node name="Elephant" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("10_qrv3o")
+
+[node name="Gorilla" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("11_j01qs")
+
+[node name="Parrot" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("12_uv27a")
+
+[node name="Penguin" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("13_05654")
+
+[node name="Rabbit" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("14_544tk")
+
+[node name="Zebra" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("15_tq1pb")
+
+[node name="Pan7on" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("16_1x17n")
+
+[node name="Ber7ker" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+
+[node name="GD7T" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+layout_mode = 2
+icon = ExtResource("18_k6401")
+
+[node name="CapitoleDuLibre" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
+layout_mode = 2
+icon = ExtResource("19_lwo4c")
+
+[node name="CapitoleDuLibre2" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
+layout_mode = 2
+icon = ExtResource("20_osbsf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="ValiderButton" type="Button" parent="Container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Valider le choix"
+
+[node name="Galanterie" type="CheckButton" parent="Container/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/check_v_offset = 0
+text = "Galanterie"
+
+[connection signal="pressed" from="Container/HBoxContainer/ValiderButton" to="." method="_on_valider"]
