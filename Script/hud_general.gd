@@ -19,4 +19,3 @@ func _on_hud_canva_continue_game():
 
 func _on_quitter_pressed() -> void:
 	get_tree().quit()
-	

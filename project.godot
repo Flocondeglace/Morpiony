@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Morpiony"
+config/version="1.1"
 run/main_scene="res://Scene/main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/image="res://Morpiony.png"
 config/icon="res://Morpiony.png"

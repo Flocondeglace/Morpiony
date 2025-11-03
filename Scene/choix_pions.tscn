@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://df14bxq5basr"]
 
 [ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="1_2ggui"]
-[ext_resource type="Script" path="res://Script/validation_choix_perso.gd" id="2_d7bi3"]
+[ext_resource type="Script" uid="uid://bucehmcuv0wqh" path="res://Script/validation_choix_perso.gd" id="2_d7bi3"]
 [ext_resource type="PackedScene" uid="uid://7inc2vpnxgqs" path="res://Scene/button_pion.tscn" id="2_kw1rl"]
 [ext_resource type="Texture2D" uid="uid://caw4vrtamqla2" path="res://Image/Pions/7fault.png" id="3_dr4gg"]
 [ext_resource type="Texture2D" uid="uid://cveokkx1tkpev" path="res://Image/Pions/cartel.png" id="5_1nib2"]
@@ -39,23 +39,21 @@ script = ExtResource("2_d7bi3")
 [node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 
 [node name="Joueur" type="Label" parent="Container"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 1
 size_flags_stretch_ratio = 3.0
 theme = ExtResource("1_2ggui")
 theme_override_constants/outline_size = 4
-text = "Joueur 1"
+text = "Player 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Container"]
 layout_mode = 2
-size_flags_vertical = 3
-text = "Il est désormais temps de choisir le pion que vous allez incarner au cours de cette partie !"
+text = "It’s now time to choose the piece you’ll play as during this game!"
 fit_content = true
 
 [node name="GridContainer" type="GridContainer" parent="Container"]
@@ -64,14 +62,17 @@ size_flags_vertical = 3
 columns = 6
 
 [node name="7Fault" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
 layout_mode = 2
 icon = ExtResource("3_dr4gg")
 
 [node name="Cartel" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
 layout_mode = 2
 icon = ExtResource("5_1nib2")
 
 [node name="7lan" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
 layout_mode = 2
 icon = ExtResource("5_uiu21")
 
@@ -116,13 +117,16 @@ layout_mode = 2
 icon = ExtResource("15_tq1pb")
 
 [node name="Pan7on" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
 layout_mode = 2
 icon = ExtResource("16_1x17n")
 
 [node name="Ber7ker" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
 layout_mode = 2
 
 [node name="GD7T" parent="Container/GridContainer" instance=ExtResource("2_kw1rl")]
+visible = false
 layout_mode = 2
 icon = ExtResource("18_k6401")
 
@@ -142,12 +146,12 @@ layout_mode = 2
 [node name="ValiderButton" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Valider le choix"
+text = "Confirm selection"
 
 [node name="Galanterie" type="CheckButton" parent="Container/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/check_v_offset = 0
-text = "Galanterie"
+text = "Let opponent start"
 
 [connection signal="pressed" from="Container/HBoxContainer/ValiderButton" to="." method="_on_valider"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cs8ncphnopmbh"]
 
-[ext_resource type="Script" path="res://Script/main.gd" id="1_lp73g"]
+[ext_resource type="Script" uid="uid://dtvtb4thfusi7" path="res://Script/main.gd" id="1_lp73g"]
 [ext_resource type="PackedScene" uid="uid://bbhpcwomc8kr6" path="res://Scene/hud.tscn" id="2_4drmq"]
 [ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="2_yj8kd"]
-[ext_resource type="Script" path="res://Script/Computer.gd" id="3_60ddj"]
+[ext_resource type="Script" uid="uid://bkkcejti2ylvl" path="res://Script/Computer.gd" id="3_60ddj"]
 [ext_resource type="Texture2D" uid="uid://48eubgpygu77" path="res://Image/chauve_souris.png" id="6_x35mh"]
 [ext_resource type="Texture2D" uid="uid://cnl8s85u0u4md" path="res://Image/2d_lights_and_shadows_neutral_point_light.webp" id="7_c1htk"]
 [ext_resource type="Texture2D" uid="uid://8gh8rfr20jof" path="res://Image/citrouille.png" id="7_sbyvk"]

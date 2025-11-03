@@ -1,11 +1,13 @@
 extends CanvasLayer
 # pour l'export
-var borne: bool = true
+var borne: bool = false
 
 # Signaux
 signal start_game
 signal return_menu
 signal change_state
+
+@export var time_anim_reflextion : float = 0.8
 
 # Animation
 @onready var anim_fin: AnimationPlayer = $"../AnimFin"
@@ -77,6 +79,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("pause") && state == "pause":
 			pause_menu_hide()
 			$CurrentPlayer.show()
+			# 
 			selected.grab_focus()
 
 
@@ -114,8 +117,8 @@ func desact_menu_start():
 func act_menu_start():
 	tout_cacher()
 	menu_button_win.hide()
-	start_button.text = 'Jouer'
-	start_menu_button.show()
+	start_button.text = 'Play'
+	# start_menu_button.show()
 	start_button.grab_focus()
 	$TitleLabel.show()
 
@@ -141,8 +144,8 @@ func end_of_game(nom_winner):
 	button_in_game_computer.hide()
 	button_in_game_borne.hide()
 	current_player.hide()
-	start_button.text = "Rejouer"
-	start_menu_button.show()
+	start_button.text = "Replay"
+	# start_menu_button.show()
 	start_button.grab_focus()
 	if (nom_winner != ""):
 		$WinLayer/WinnerLabel.text = nom_winner + " a gagné :)"
@@ -173,7 +176,7 @@ func _on_menu_pressed():
 func pause_menu_show():
 	set_state("pause")
 	pause.show()
-	continuer_button.grab_focus()
+	# continuer_button.grab_focus()
 
 func pause_menu_hide():
 	set_state("game")
@@ -183,35 +186,38 @@ func set_state(s):
 	state = s
 	change_state.emit()
 	
-func reflexion_show(b):
+func reflexion_show(_b):
 	
 	reflexion.show()
 	for i in range(0,2):
 		points.text = "."
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(time_anim_reflextion/6.0).timeout
 		points.text = ".."
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(time_anim_reflextion/6.0).timeout
 		points.text = "..."
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(time_anim_reflextion/6.0).timeout
 	reflexion.hide()
 
 	
 
 func _on_continue_pressed():
 	current_player.show()
-	selected.grab_focus()
 	pause_menu_hide()
 
 
 func _on_rules_pressed():
 	rules_panel.show()
-	rules_quit_button.grab_focus()
+	# rules_quit_button.grab_focus()
 
 
 func _on_rules_quit_button_pressed():
 	rules_panel.hide()
-	if state == "pause":
-		rules_button_pause.grab_focus()
-	else :
-		rules_button_debut.grab_focus()
+	# if state == "pause":
+		#rules_button_pause.grab_focus()
+	#else :
+		#rules_button_debut.grab_focus()
 		
+
+
+func _on_pause_pressed() -> void:
+	pause_menu_show()

@@ -17,27 +17,35 @@ glow_map = ExtResource("2_lcj65")
 [node name="Node2D" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = -109.99997
+offset_right = 94.0
+offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.289711, 2.7453794)
 theme = ExtResource("1_m52xi")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
 environment = SubResource("Environment_8ukja")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="CanvasLayer"]
+position = Vector2(566, 422)
 energy = 0.59
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 modulate = Color(0.239216, 0.239216, 0.239216, 1)
-offset_left = 908.0
-offset_top = 50.0
-offset_right = 1808.0
-offset_bottom = 100.0
+offset_left = 1474.0
+offset_top = 472.0
+offset_right = 2374.0
+offset_bottom = 522.0
 rotation = 1.5708
 theme = ExtResource("1_m52xi")
 toggle_mode = true
@@ -45,10 +53,10 @@ button_pressed = true
 
 [node name="Button2" type="Button" parent="CanvasLayer"]
 modulate = Color(0.239216, 0.239216, 0.239216, 1)
-offset_left = 1208.0
-offset_top = 50.0
-offset_right = 2108.0
-offset_bottom = 100.0
+offset_left = 1774.0
+offset_top = 472.0
+offset_right = 2674.0
+offset_bottom = 522.0
 rotation = 1.5708
 theme = ExtResource("1_m52xi")
 toggle_mode = true
@@ -56,29 +64,29 @@ button_pressed = true
 
 [node name="Button3" type="Button" parent="CanvasLayer"]
 modulate = Color(0.239216, 0.239216, 0.239216, 1)
-offset_left = 558.0
-offset_top = 300.0
-offset_right = 1458.0
-offset_bottom = 350.0
+offset_left = 1124.0
+offset_top = 722.0
+offset_right = 2024.0
+offset_bottom = 772.0
 theme = ExtResource("1_m52xi")
 toggle_mode = true
 button_pressed = true
 
 [node name="Button4" type="Button" parent="CanvasLayer"]
 modulate = Color(0.239216, 0.239216, 0.239216, 1)
-offset_left = 558.0
-offset_top = 600.0
-offset_right = 1458.0
-offset_bottom = 650.0
+offset_left = 1124.0
+offset_top = 1022.0
+offset_right = 2024.0
+offset_bottom = 1072.0
 theme = ExtResource("1_m52xi")
 toggle_mode = true
 button_pressed = true
 
 [node name="M" type="Label" parent="CanvasLayer"]
-offset_left = 580.0
-offset_top = 30.0
-offset_right = 880.0
-offset_bottom = 330.0
+offset_left = 1146.0
+offset_top = 452.0
+offset_right = 1446.0
+offset_bottom = 752.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "M"
@@ -86,10 +94,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="O" type="Label" parent="CanvasLayer"]
-offset_left = 880.0
-offset_top = 30.0
-offset_right = 1180.0
-offset_bottom = 330.0
+offset_left = 1446.0
+offset_top = 452.0
+offset_right = 1746.0
+offset_bottom = 752.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "O"
@@ -97,10 +105,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="R" type="Label" parent="CanvasLayer"]
-offset_left = 1180.0
-offset_top = 30.0
-offset_right = 1480.0
-offset_bottom = 330.0
+offset_left = 1746.0
+offset_top = 452.0
+offset_right = 2046.0
+offset_bottom = 752.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "R"
@@ -108,10 +116,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="P" type="Label" parent="CanvasLayer"]
-offset_left = 580.0
-offset_top = 330.0
-offset_right = 880.0
-offset_bottom = 630.0
+offset_left = 1146.0
+offset_top = 752.0
+offset_right = 1446.0
+offset_bottom = 1052.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "P"
@@ -119,10 +127,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="I" type="Label" parent="CanvasLayer"]
-offset_left = 880.0
-offset_top = 330.0
-offset_right = 1180.0
-offset_bottom = 630.0
+offset_left = 1446.0
+offset_top = 752.0
+offset_right = 1746.0
+offset_bottom = 1052.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "I"
@@ -130,10 +138,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="O2" type="Label" parent="CanvasLayer"]
-offset_left = 1180.0
-offset_top = 330.0
-offset_right = 1480.0
-offset_bottom = 630.0
+offset_left = 1746.0
+offset_top = 752.0
+offset_right = 2046.0
+offset_bottom = 1052.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "O"
@@ -141,10 +149,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="N" type="Label" parent="CanvasLayer"]
-offset_left = 580.0
-offset_top = 630.0
-offset_right = 880.0
-offset_bottom = 930.0
+offset_left = 1146.0
+offset_top = 1052.0
+offset_right = 1446.0
+offset_bottom = 1352.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "N"
@@ -152,10 +160,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Y" type="Label" parent="CanvasLayer"]
-offset_left = 880.0
-offset_top = 630.0
-offset_right = 1180.0
-offset_bottom = 930.0
+offset_left = 1446.0
+offset_top = 1052.0
+offset_right = 1746.0
+offset_bottom = 1352.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 200
 text = "Y"
@@ -163,10 +171,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="byme" type="Label" parent="CanvasLayer"]
-offset_left = 1180.0
-offset_top = 776.0
-offset_right = 1480.0
-offset_bottom = 1076.0
+offset_left = 1746.0
+offset_top = 1198.0
+offset_right = 2046.0
+offset_bottom = 1498.0
 theme = ExtResource("1_m52xi")
 theme_override_font_sizes/font_size = 30
 text = "by Flocondeglace"
@@ -174,10 +182,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button5" type="Button" parent="CanvasLayer"]
-offset_left = 1194.0
-offset_top = 649.0
-offset_right = 1844.0
-offset_bottom = 1289.0
+offset_left = 1760.0
+offset_top = 1071.0
+offset_right = 2410.0
+offset_bottom = 1711.0
 scale = Vector2(0.4, 0.4)
 icon = ExtResource("3_uccv7")
 flat = true

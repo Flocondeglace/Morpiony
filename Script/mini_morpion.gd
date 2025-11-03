@@ -47,7 +47,7 @@ func _process(_delta):
 func start_turn(player_turn):
 	current_player = player_turn
 	set_case_accessible(true)
-	cdispo[0].grab_focus()
+	# cdispo[0].grab_focus()
 
 func finish_turn():
 	set_case_accessible(false)

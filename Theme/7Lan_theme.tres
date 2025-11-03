@@ -35,5 +35,6 @@ OptionButton/fonts/font = ExtResource("1_1qknk")
 Panel/styles/panel = ExtResource("2_hnr51")
 PanelContainer/styles/panel = ExtResource("4_8lv43")
 PopupPanel/styles/panel = ExtResource("4_8lv43")
-RichTextLabel/font_sizes/normal_font_size = 35
+RichTextLabel/font_sizes/bold_font_size = 60
+RichTextLabel/font_sizes/normal_font_size = 48
 RichTextLabel/fonts/normal_font = ExtResource("1_1qknk")

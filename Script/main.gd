@@ -158,7 +158,7 @@ func new_game(nbPlayer):
 			minimorp.initialiser_logos(logos)
 			morp[3*i + j].minimorpion_played.connect(_on_mini_morpion_minimorpion_played)
 			compteur +=1
-	morp[0].minimorp[0].grab_focus()
+	# morp[0].minimorp[0].grab_focus()
 	case = morp[0].minimorp[0].case
 	current_player_rect.set_texture(case[player_turn])
 	let_all_choices()

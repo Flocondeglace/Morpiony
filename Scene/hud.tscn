@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bbhpcwomc8kr6"]
 
-[ext_resource type="Script" path="res://Script/hud_general.gd" id="1_mo8us"]
-[ext_resource type="Script" path="res://Script/HUD.gd" id="1_u1efe"]
+[ext_resource type="Script" uid="uid://cuev64ppby8hk" path="res://Script/hud_general.gd" id="1_mo8us"]
+[ext_resource type="Script" uid="uid://t8yl7uiw8vxq" path="res://Script/HUD.gd" id="1_u1efe"]
 [ext_resource type="ButtonGroup" uid="uid://bpxcqukfdv4mf" path="res://GroupButton/group_button_player.tres" id="2_haoto"]
 [ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="2_sfc2u"]
 [ext_resource type="PackedScene" uid="uid://d2d1fjmfpq5sp" path="res://Scene/options_ui.tscn" id="3_60fqp"]
@@ -95,8 +95,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b3jfi"]
 _data = {
-"RESET": SubResource("Animation_ybltx"),
-"transition_fin_partie": SubResource("Animation_kj2tg")
+&"RESET": SubResource("Animation_ybltx"),
+&"transition_fin_partie": SubResource("Animation_kj2tg")
 }
 
 [sub_resource type="Gradient" id="Gradient_ctxxn"]
@@ -165,7 +165,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = SubResource("FontVariation_kxhex")
 theme_override_font_sizes/font_size = 60
-text = "Jouer"
+text = "Play"
 
 [node name="Menu" type="Button" parent="Control/HUDcanva/StartMenuButton"]
 layout_mode = 2
@@ -176,12 +176,12 @@ text = "Menu"
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_sfc2u")
-text = "Règles du jeu"
+text = "Rules"
 
 [node name="Quitter" type="Button" parent="Control/HUDcanva/StartMenuButton"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Quitter"
+text = "Quit"
 
 [node name="TitleLabel" type="Label" parent="Control/HUDcanva"]
 anchors_preset = 5
@@ -189,7 +189,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -293.5
 offset_right = 293.5
-offset_bottom = 400.0
+offset_bottom = 279.0
 grow_horizontal = 2
 text = "Morpionny : 
 morpion's morpions"
@@ -202,27 +202,28 @@ visible = false
 layout_mode = 3
 anchors_preset = 0
 
-[node name="Menu" type="Button" parent="Control/HUDcanva/ButtonInGameComputer"]
+[node name="Pause" type="Button" parent="Control/HUDcanva/ButtonInGameComputer"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 180.0
 offset_bottom = 104.0
 theme = ExtResource("2_sfc2u")
-text = "Menu"
+text = "Pause"
 
 [node name="Restart" type="Button" parent="Control/HUDcanva/ButtonInGameComputer"]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1570.0
+offset_left = 1318.0
 offset_top = 20.0
-offset_right = 1908.0
+offset_right = 1656.0
 offset_bottom = 104.0
 grow_horizontal = 0
 theme = ExtResource("2_sfc2u")
-text = "Recommencer"
+text = "Restart"
 
 [node name="ButtonInGameBorne" type="Control" parent="Control/HUDcanva"]
 visible = false
@@ -299,31 +300,31 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_sfc2u")
-text = "Continuer"
+text = "Continue"
 
 [node name="StartButton" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_sfc2u")
-text = "Recommencer"
+text = "Restart"
 
 [node name="Rules" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_sfc2u")
-text = "Règles du jeu"
+text = "Rules"
 
 [node name="Menu" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_sfc2u")
-text = "Retourner au Menu"
+text = "Go back to the Menu"
 
 [node name="Quitter" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_sfc2u")
-text = "Quitter"
+text = "Quit"
 
 [node name="CurrentPlayer" type="TextureRect" parent="Control/HUDcanva"]
 anchors_preset = 5
@@ -372,24 +373,28 @@ theme = ExtResource("2_sfc2u")
 
 [node name="Container" type="VBoxContainer" parent="Control/HUDcanva/RulesPanel"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/HUDcanva/RulesPanel/Container"]
 layout_mode = 2
-text = "Règles du jeu :
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+bbcode_enabled = true
+text = "[b]Rules :[/b]
 
-Pour gagner, il faut aligner 3 fois son symbole dans le grand morpion. Pour remporter une case du grand morpion, il faut gagner le mini morpion qui le compose. Pour gagner le mini morpion, c'est comme dans le morpion usuel, il faut aligner 3 de vos symboles.
+To win, you must [b]align your symbol three times in the big tic-tac-toe board[/b].
+To claim a square on the big board, you have to [b]win the mini tic-tac-toe[/b] that represents it.
+To win a mini tic-tac-toe, the rule is the same as usual: you must line up three of your symbols.
 
-Petite particularité, l'emplacement dans lequel on joue dans le minimorpion influence où devra jouer l'autre joueur à son tour. Ainsi, il devra jouer dans le morpion en haut à droite si vous venez de jouer en haut à droite du minimorpion, etc... Si ce minimorpion est déjà terminé, le joueur pourra jouer où il veut !
+A [b]small twist[/b]: the position you play in a mini tic-tac-toe determines where your opponent must play next.
+For example, if you play in the top-right square of a mini board, your opponent must play in the top-right mini board.
+If that mini board has already been completed, the player is [b]free to play anywhere ![/b]
 
-Bonne partie !"
-fit_content = true
+Have fun!"
 
 [node name="RulesQuitButton" type="Button" parent="Control/HUDcanva/RulesPanel/Container"]
 layout_mode = 2
 size_flags_vertical = 10
-text = "Retour"
+text = "Back"
 
 [node name="ChoixPions" parent="Control/HUDcanva" instance=ExtResource("8_wddia")]
 unique_name_in_owner = true
@@ -397,7 +402,7 @@ visible = false
 
 [node name="AnimFin" type="AnimationPlayer" parent="Control"]
 libraries = {
-"": SubResource("AnimationLibrary_b3jfi")
+&"": SubResource("AnimationLibrary_b3jfi")
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control/AnimFin"]
@@ -435,7 +440,7 @@ vertical_alignment = 3
 [connection signal="pressed" from="Control/HUDcanva/StartMenuButton/Menu" to="Control/HUDcanva" method="_on_menu_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/StartMenuButton/Rules" to="Control/HUDcanva" method="_on_rules_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/StartMenuButton/Quitter" to="." method="_on_quitter_pressed"]
-[connection signal="pressed" from="Control/HUDcanva/ButtonInGameComputer/Menu" to="Control/HUDcanva" method="_on_menu_pressed"]
+[connection signal="pressed" from="Control/HUDcanva/ButtonInGameComputer/Pause" to="Control/HUDcanva" method="_on_pause_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/ButtonInGameComputer/Restart" to="Control/HUDcanva" method="_on_restart_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/Pause/PauseButton/Continue" to="Control/HUDcanva" method="_on_continue_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/Pause/PauseButton/StartButton" to="Control/HUDcanva" method="_on_start_button_pressed"]
