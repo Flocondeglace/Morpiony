@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cbs4vc35jti5l"]
+
+[ext_resource type="StyleBox" uid="uid://hr2pykuswq1y" path="res://Theme/style_box/7lan_button_texture_hover.tres" id="1_0rxfs"]
+[ext_resource type="FontFile" uid="uid://24xgmyn4n2hk" path="res://Font/Letters for Learners.ttf" id="1_1qknk"]
+[ext_resource type="StyleBox" uid="uid://b0t1jjdfi7lmr" path="res://Theme/style_box/7lan_button_texture_up.tres" id="1_jg776"]
+[ext_resource type="StyleBox" uid="uid://b175aokxyvtjr" path="res://Theme/style_box/7lan_box.tres" id="2_hnr51"]
+[ext_resource type="StyleBox" uid="uid://k56x34bxx3vm" path="res://Theme/style_box/7lan_button_texture_down.tres" id="2_xikg4"]
+[ext_resource type="StyleBox" uid="uid://2ytgcowcly2r" path="res://Theme/style_box/7lan_popup.tres" id="4_8lv43"]
+
+[resource]
+default_font = ExtResource("1_1qknk")
+default_font_size = 64
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/styles/focus = ExtResource("1_0rxfs")
+Button/styles/normal = ExtResource("1_jg776")
+Button/styles/pressed = ExtResource("2_xikg4")
+Label/font_sizes/font_size = 72
+Label/fonts/font = ExtResource("1_1qknk")
+OptionButton/fonts/font = ExtResource("1_1qknk")
+Panel/styles/panel = ExtResource("2_hnr51")
+PanelContainer/styles/panel = ExtResource("4_8lv43")
+PopupPanel/styles/panel = ExtResource("4_8lv43")
+RichTextLabel/font_sizes/normal_font_size = 35
+RichTextLabel/fonts/normal_font = ExtResource("1_1qknk")

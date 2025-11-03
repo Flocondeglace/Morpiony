@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2d1fjmfpq5sp"]
 
-[ext_resource type="Theme" uid="uid://ynoneli0cfjg" path="res://Theme/halloween_theme.tres" id="1_877jn"]
+[ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="1_lj6b1"]
 
 [node name="OptionsUI" type="CanvasLayer"]
 
@@ -16,7 +16,7 @@ offset_right = 400.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_877jn")
+theme = ExtResource("1_lj6b1")
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 1
@@ -24,7 +24,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 100.0
 grow_horizontal = 2
-theme = ExtResource("1_877jn")
+theme = ExtResource("1_lj6b1")
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -42,10 +42,12 @@ offset_right = 300.0
 offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lj6b1")
 
 [node name="DifficultyLabel" type="Label" parent="Panel/Difficulty"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("1_lj6b1")
 theme_override_font_sizes/font_size = 32
 text = "Difficulty :"
 vertical_alignment = 1
@@ -54,11 +56,11 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+theme = ExtResource("1_lj6b1")
 theme_override_font_sizes/font_size = 32
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Stupide"
-popup/item_0/id = 0
 popup/item_1/text = "Aggressif"
 popup/item_1/id = 1
 popup/item_2/text = "Defenssif"

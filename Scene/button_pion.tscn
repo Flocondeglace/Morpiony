@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://7inc2vpnxgqs"]
+
+[ext_resource type="Texture2D" uid="uid://cg4etsd4tdiv5" path="res://Image/Pions/ber7ker.png" id="1_p6kwd"]
+[ext_resource type="ButtonGroup" uid="uid://b7v3u7f02fpqc" path="res://GroupButton/choix_perso_buttons.tres" id="1_u4we5"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(200, 200)
+toggle_mode = true
+button_group = ExtResource("1_u4we5")
+icon = ExtResource("1_p6kwd")
+icon_alignment = 1
+expand_icon = true

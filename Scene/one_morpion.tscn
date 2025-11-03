@@ -19,7 +19,7 @@ grow_vertical = 2
 color = Color(0.988235, 0.188235, 0.509804, 1)
 
 [node name="MiniMorpion" parent="." instance=ExtResource("1_yq78t")]
-offset_left = -108.0
-offset_top = -108.0
-offset_right = 108.0
-offset_bottom = 108.0
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
