@@ -1,0 +1,56 @@
+key,en,fr
+MENU_BUTTON,Menu,Menu
+QUIT_BUTTON,Quit,Quitter
+WIN_TEXT,won :),a gagné :)
+TIE_TEXT,"It's a tie: nobody wins, nobody loses! \n Rematch?","Egalité : pas de gagnant, ni de perdant ! Une revanche ?"
+REPLAY_BUTTON,Replay,Rejouer
+RULES_BUTTON,Rules,Règles du jeux
+PLAY_BUTTON,Play,Jouer
+PAUSE_BUTTON,Pause,Pause
+RESTART_BUTTON,Restart,Recommencer
+PAUSE_MENU,Pause Menu,Menu Pause
+CONTINUE_BUTTON,Continue,Continuer
+RULES,"[b]Rules :[/b]
+
+To win, you must [b]align your symbol three times in the big tic-tac-toe board[/b].
+To claim a square on the big board, you have to [b]win the mini tic-tac-toe[/b] that represents it.
+To win a mini tic-tac-toe, the rule is the same as usual: you must line up three of your symbols.
+
+A [b]small twist[/b]: the position you play in a mini tic-tac-toe determines where your opponent must play next.
+For example, if you play in the top-right square of a mini board, your opponent must play in the top-right mini board.
+If that mini board has already been completed, the player is [b]free to play anywhere ![/b]
+
+Have fun!","[b]Règles du jeu :[/b]
+
+Pour gagner, vous devez [b]aligner trois fois votre symbole sur le grand morpion[/b].
+Pour réclamer une case sur le grand plateau, vous devez [b]remporter le mini morpion[/b] qui la représente.
+Pour gagner un mini morpion, la règle est la même que d’habitude : alignez trois de vos symboles.
+
+Une [b]petite particularité[/b] : la position que vous jouez dans un mini morpion détermine où votre adversaire devra jouer ensuite.
+Par exemple, si vous jouez dans la case en haut à droite d’un mini plateau, votre adversaire devra jouer dans le mini plateau en haut à droite.
+Si ce mini plateau est déjà terminé, le joueur est [b]libre de jouer où il veut ![/b]
+
+Amusez-vous bien !"
+BACK_BUTTON,Back,Retour
+SOLO,Solo,Solo
+VERSUS,Versus,Versus
+CHOOSE_PIECE_TEXT,It’s now time to choose the piece you’ll play as during this game!,C’est maintenant le moment de choisir le pion avec lequel tu vas jouer pour cette partie !
+PLAYER_1,Player 1,Joueur 1
+PLAYER_2,Player 2,Joueur 2
+CONFIRM_BUTTON,Confirm selection,Confirmer la sélection
+PLAYFIRST_BUTTON,Go first  ,Jouer en premier  
+PLAYER,Player,Joueur
+COMPUTER_STRATEGY,Computer strategy : ,Stratégie de l'ordinateur : 
+FRENCH,French,Français
+ENGLISH,English,Anglais
+LANGUAGE,Language : ,Langue : 
+ATTACK,Attack,Attaque
+DEFENSE,Defense,Défense
+STUPID,Stupid,Stupide
+OPTIONS,Options,Options
+CREDIT,"[b]Credit : [/b]
+Game made by Flocondeglace.
+
+All sprites and sound effects are from [url=www.kenney.nl] Kenney Assets[/url] .","[b]Crédits : [/b]
+Jeu créé par Flocondeglace.
+Tous les sprites et effets sonores proviennent de [url=www.kenney.nl] Kenney Assets[/url] ."

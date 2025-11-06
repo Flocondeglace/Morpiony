@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://byao50adgkid2"]
+
+[ext_resource type="AudioStream" uid="uid://2t8mg40dcsb5" path="res://Audio/select_002.ogg" id="1_8llme"]
+
+[node name="SelectAudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_8llme")
+bus = &"Sfx"

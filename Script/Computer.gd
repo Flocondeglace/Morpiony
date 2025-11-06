@@ -1,5 +1,6 @@
-extends Node2D
+class_name Computer
 
+signal choice
 ## Contiendra la liste des cases voisines à une case déjà prises par le joueur 
 var hasneighbour = []
 var num_player : int
@@ -8,6 +9,15 @@ var morpions_disponibles
 ## Case que le joueur va jouer
 var choix
 var liste_choix
+var strat:int=2
+var choice_made : bool = false
+
+func reset():
+	hasneighbour = []
+	choice_made = false
+
+func change_strat(st:int):
+	strat = st
 
 func play_strat_stupide():
 	return play_random(cases_disponibles)
@@ -44,22 +54,32 @@ func play_strat_def():
 		liste_choix.append(play_random(cases_disponibles))
 	return play_random_list(liste_choix)
 
-func play(vnum_player,_morp,dispo,morplegal):
+func choose(vnum_player,_morp,dispo,morplegal):
+	choice_made = false
 	num_player = vnum_player
 	cases_disponibles = dispo
 	morpions_disponibles = morplegal
 	choix = null
-	# stupide
-	# choix = play_strat_stupide()
+	match strat:
+		0:
+			# stupide
+			choix = play_strat_stupide()
+		1:
+			# semi smart attaque
+			choix = play_strat_attaque()
+		2:
+			# semi smart defense
+			choix = play_strat_def()
+	choice_made = true
+	choice.emit()
+	# click(choix)
 
-	# semi smart attaque
-	#choix = play_strat_attaque()
-	
-	# semi smart defense
-	choix = play_strat_def()
-	
+func play():
+	if !choice_made:
+		print("await computer")
+		await choice
 	click(choix)
-	
+	choice_made = false
 
 func play_random(dispo):
 	return dispo.pick_random().pick_random()
@@ -67,7 +87,7 @@ func play_random(dispo):
 func play_random_list(dispo):
 	return dispo.pick_random()
 	
-func click(case):
+func click(case:Case):
 	case.set_piece(num_player)
 
 func play_attack():

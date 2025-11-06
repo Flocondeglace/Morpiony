@@ -1,0 +1,258 @@
+[gd_scene load_steps=19 format=3 uid="uid://dib4vdenqbl48"]
+
+[ext_resource type="Theme" uid="uid://dh1tljd37ifvs" path="res://Theme/playstore_theme.tres" id="1_c4c7f"]
+[ext_resource type="Script" uid="uid://46x4g3j804gf" path="res://Script/click_button.gd" id="2_gbt2k"]
+[ext_resource type="Script" uid="uid://dw3ytoiq4visr" path="res://Script/menu_morpion.gd" id="2_x18tc"]
+[ext_resource type="Texture2D" uid="uid://c6dgunqcilbed" path="res://Image/kenney/singleplayer.png" id="3_t828i"]
+[ext_resource type="Texture2D" uid="uid://rykcb4ekl6wm" path="res://Image/kenney/multiplayer.png" id="4_4uqcu"]
+[ext_resource type="Texture2D" uid="uid://5pm8la3qhvkm" path="res://Image/kenney/GameIcons/right.png" id="4_t828i"]
+[ext_resource type="Texture2D" uid="uid://xb11ogvpu00q" path="res://Image/kenney/GameIcons/information.png" id="5_x18tc"]
+[ext_resource type="Texture2D" uid="uid://d0rihdufgtp1k" path="res://Image/kenney/GameIcons/gear.png" id="6_xem62"]
+[ext_resource type="Texture2D" uid="uid://mvxtyldew20" path="res://Image/kenney/GameIcons/exitRight.png" id="7_xcgx2"]
+[ext_resource type="PackedScene" uid="uid://byao50adgkid2" path="res://Scene/select_audio_stream_player.tscn" id="8_gbt2k"]
+[ext_resource type="Script" uid="uid://b6804h6676jt3" path="res://Script/background_animation_player.gd" id="10_4uqcu"]
+[ext_resource type="PackedScene" uid="uid://d2d1fjmfpq5sp" path="res://Scene/options_ui.tscn" id="11_xem62"]
+
+[sub_resource type="Gradient" id="Gradient_4uqcu"]
+colors = PackedColorArray(0.43529412, 0.11372549, 0.105882354, 1, 0.6, 0.34509805, 0.16470589, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x18tc"]
+noise_type = 2
+fractal_octaves = 1
+cellular_distance_function = 1
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x18tc"]
+noise = SubResource("FastNoiseLite_x18tc")
+color_ramp = SubResource("Gradient_4uqcu")
+
+[sub_resource type="Animation" id="Animation_4nvls"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:noise:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [512]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture:noise:cellular_jitter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0tcp8"]
+resource_name = "test3"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:noise:cellular_jitter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, -5.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4h8nd"]
+_data = {
+&"RESET": SubResource("Animation_4nvls"),
+&"movement": SubResource("Animation_0tcp8")
+}
+
+[node name="MenuMorpion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c4c7f")
+script = ExtResource("2_x18tc")
+
+[node name="Background" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_x18tc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+libraries = {
+&"": SubResource("AnimationLibrary_4h8nd")
+}
+speed_scale = 0.02
+script = ExtResource("10_4uqcu")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+modulate = Color(1, 0.9019608, 0.654902, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Empty1" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "-"
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Solo" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SOLO"
+icon = ExtResource("3_t828i")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Versus" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "VERSUS"
+icon = ExtResource("4_4uqcu")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Rules" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "RULES_BUTTON"
+icon = ExtResource("5_x18tc")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Empty2" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "-"
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Play" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "PLAY_BUTTON"
+icon = ExtResource("4_t828i")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Options" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "OPTIONS"
+icon = ExtResource("6_xem62")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Quit" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "QUIT_BUTTON"
+icon = ExtResource("7_xcgx2")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Empty3" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "-"
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_gbt2k")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Popups" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OptionsUI" parent="Popups" instance=ExtResource("11_xem62")]
+
+[node name="SelectAudioStreamPlayer" parent="." instance=ExtResource("8_gbt2k")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="GridContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="GridContainer/Quit" to="." method="_on_quit_pressed"]

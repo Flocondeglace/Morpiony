@@ -142,5 +142,6 @@ texture = ExtResource("7_c1htk")
 texture_scale = 0.5
 
 [connection signal="change_state" from="HUD" to="." method="_on_hud_change_state"]
+[connection signal="computer_strat_selected" from="HUD" to="Computer" method="change_strat"]
 [connection signal="menu" from="HUD" to="." method="_on_hud_return_menu"]
 [connection signal="start" from="HUD" to="." method="new_game"]

@@ -1,9 +1,7 @@
-res://Scene/choix_pions.tscn
-res://Scene/hud.tscn
-res://Script/HUD.gd
-res://Scene/main.tscn
-res://Script/hud_general.gd
-res://Scene/logo.tscn
-res://Theme/7Lan_theme.tres
-res://Script/main.gd
-res://Script/mini_morpion.gd
+res://Scene/menu_morpion.tscn
+res://Theme/playstore_theme.tres
+res://Scene/pawn_selection.tscn
+res://Theme/style_box/playstore_border_zoom_box_texture.tres
+res://Script/validation_choix_perso.gd
+res://Translations/translations.en.translation
+res://Translations/translations.fr.translation

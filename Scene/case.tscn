@@ -1,6 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk5m7w0bvoig3"]
+[gd_scene load_steps=7 format=3 uid="uid://bk5m7w0bvoig3"]
 
-[ext_resource type="Script" path="res://Script/Case.gd" id="1_mooev"]
+[ext_resource type="Script" uid="uid://bor55vk3gsllh" path="res://Script/Case.gd" id="1_mooev"]
+[ext_resource type="AudioStream" uid="uid://c7lkaqhe3805x" path="res://Audio/toggle_001.ogg" id="2_2iwwl"]
+[ext_resource type="AudioStream" uid="uid://2t8mg40dcsb5" path="res://Audio/select_002.ogg" id="2_f48iv"]
+
+[sub_resource type="Animation" id="Animation_1g2xk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f48iv"]
+resource_name = "select"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekxeb"]
+_data = {
+&"RESET": SubResource("Animation_1g2xk"),
+&"select": SubResource("Animation_f48iv")
+}
 
 [node name="Case" type="Button"]
 custom_minimum_size = Vector2(100, 100)
@@ -10,5 +48,18 @@ scale = Vector2(0.3, 0.3)
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_mooev")
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_f48iv")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2iwwl")
+bus = &"Sfx"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ekxeb")
+}
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

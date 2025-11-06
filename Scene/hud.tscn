@@ -1,16 +1,114 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbhpcwomc8kr6"]
+[gd_scene load_steps=39 format=3 uid="uid://bbhpcwomc8kr6"]
 
 [ext_resource type="Script" uid="uid://cuev64ppby8hk" path="res://Script/hud_general.gd" id="1_mo8us"]
 [ext_resource type="Script" uid="uid://t8yl7uiw8vxq" path="res://Script/HUD.gd" id="1_u1efe"]
+[ext_resource type="Script" uid="uid://b6804h6676jt3" path="res://Script/background_animation_player.gd" id="2_688fl"]
 [ext_resource type="ButtonGroup" uid="uid://bpxcqukfdv4mf" path="res://GroupButton/group_button_player.tres" id="2_haoto"]
-[ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="2_sfc2u"]
-[ext_resource type="PackedScene" uid="uid://d2d1fjmfpq5sp" path="res://Scene/options_ui.tscn" id="3_60fqp"]
+[ext_resource type="PackedScene" uid="uid://d2d1fjmfpq5sp" path="res://Scene/options.tscn" id="3_60fqp"]
+[ext_resource type="Theme" uid="uid://dh1tljd37ifvs" path="res://Theme/playstore_theme.tres" id="3_etpbg"]
 [ext_resource type="Texture2D" uid="uid://c6dgunqcilbed" path="res://Image/kenney/singleplayer.png" id="5_my0dw"]
 [ext_resource type="Texture2D" uid="uid://rykcb4ekl6wm" path="res://Image/kenney/multiplayer.png" id="6_l7rvd"]
 [ext_resource type="Texture2D" uid="uid://wmvvwk0yaec2" path="res://Image/boutons_borne/six_blue_buttons.png" id="7_eag8c"]
 [ext_resource type="Texture2D" uid="uid://dk4vuxq21i65y" path="res://Image/boutons_borne/six_red_buttons.png" id="7_ekfun"]
-[ext_resource type="PackedScene" uid="uid://df14bxq5basr" path="res://Scene/choix_pions.tscn" id="8_wddia"]
+[ext_resource type="Script" uid="uid://46x4g3j804gf" path="res://Script/click_button.gd" id="7_ulpbq"]
+[ext_resource type="PackedScene" uid="uid://df14bxq5basr" path="res://Scene/pawn_selection.tscn" id="8_wddia"]
 [ext_resource type="Texture2D" uid="uid://dxfbr0qbtlb6i" path="res://Image/boutons_borne/six_blue_buttons_1.png" id="8_wmmkh"]
+[ext_resource type="AudioStream" uid="uid://2t8mg40dcsb5" path="res://Audio/select_002.ogg" id="13_688fl"]
+[ext_resource type="PackedScene" uid="uid://dfkgbrr7hlacp" path="res://Scene/rules.tscn" id="13_k2652"]
+[ext_resource type="Texture2D" uid="uid://dgatcuv56svk4" path="res://Image/kenney/GameIcons/musicOn.png" id="15_k2652"]
+[ext_resource type="Script" uid="uid://c5ajelj00nd4s" path="res://Script/sound_button.gd" id="16_4nvls"]
+
+[sub_resource type="Gradient" id="Gradient_ulpbq"]
+colors = PackedColorArray(0.43529412, 0.11372549, 0.105882354, 1, 0.6, 0.34509805, 0.16470589, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_688fl"]
+noise_type = 2
+fractal_octaves = 1
+cellular_distance_function = 1
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_etpbg"]
+noise = SubResource("FastNoiseLite_688fl")
+color_ramp = SubResource("Gradient_ulpbq")
+
+[sub_resource type="Animation" id="Animation_4nvls"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:noise:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [512]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture:noise:cellular_jitter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0tcp8"]
+resource_name = "test3"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:noise:cellular_jitter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, -5.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4h8nd"]
+_data = {
+&"RESET": SubResource("Animation_4nvls"),
+&"movement": SubResource("Animation_0tcp8")
+}
+
+[sub_resource type="Gradient" id="Gradient_etpbg"]
+colors = PackedColorArray(0.42745098, 0.69411767, 0.7490196, 1, 1, 0.91764706, 0.9254902, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k2652"]
+noise_type = 2
+fractal_octaves = 1
+cellular_distance_function = 1
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4dp7q"]
+noise = SubResource("FastNoiseLite_k2652")
+color_ramp = SubResource("Gradient_etpbg")
 
 [sub_resource type="FontVariation" id="FontVariation_kxhex"]
 
@@ -105,17 +203,88 @@ colors = PackedColorArray(0.631373, 0.752941, 1, 1, 0.827451, 0.886275, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ye7h3"]
 gradient = SubResource("Gradient_ctxxn")
 
+[sub_resource type="Animation" id="Animation_etpbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SelectAudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4dp7q"]
+resource_name = "click"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SelectAudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2652"]
+_data = {
+&"RESET": SubResource("Animation_etpbg"),
+&"click": SubResource("Animation_4dp7q")
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_mo8us")
+
+[node name="Background2" type="TextureRect" parent="."]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_etpbg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background2"]
+libraries = {
+&"": SubResource("AnimationLibrary_4h8nd")
+}
+speed_scale = 0.02
+script = ExtResource("2_688fl")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_4dp7q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+libraries = {
+&"": SubResource("AnimationLibrary_4h8nd")
+}
+speed_scale = 0.02
+script = ExtResource("2_688fl")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("2_sfc2u")
+theme = ExtResource("3_etpbg")
 
 [node name="HUDcanva" type="CanvasLayer" parent="Control"]
+layer = 2
 script = ExtResource("1_u1efe")
 
 [node name="StartMenuButton" type="GridContainer" parent="Control/HUDcanva"]
@@ -130,7 +299,7 @@ offset_right = 342.0
 offset_bottom = 365.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_sfc2u")
+theme = ExtResource("3_etpbg")
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 20
 
@@ -148,7 +317,7 @@ size_flags_vertical = 3
 toggle_mode = true
 button_pressed = true
 button_group = ExtResource("2_haoto")
-text = "Solo"
+text = "SOLO"
 icon = ExtResource("5_my0dw")
 
 [node name="Player2" type="Button" parent="Control/HUDcanva/StartMenuButton/GridContainer"]
@@ -157,7 +326,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
 button_group = ExtResource("2_haoto")
-text = "Versus"
+text = "VERSUS"
 icon = ExtResource("6_l7rvd")
 
 [node name="StartButton" type="Button" parent="Control/HUDcanva/StartMenuButton"]
@@ -165,23 +334,36 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = SubResource("FontVariation_kxhex")
 theme_override_font_sizes/font_size = 60
-text = "Play"
+text = "PLAY_BUTTON"
+script = ExtResource("7_ulpbq")
 
 [node name="Menu" type="Button" parent="Control/HUDcanva/StartMenuButton"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Menu"
+text = "MENU_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="Rules" type="Button" parent="Control/HUDcanva/StartMenuButton"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_sfc2u")
-text = "Rules"
+theme = ExtResource("3_etpbg")
+text = "RULES_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Options" type="Button" parent="Control/HUDcanva/StartMenuButton"]
+layout_mode = 2
+text = "OPTIONS"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="Quitter" type="Button" parent="Control/HUDcanva/StartMenuButton"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Quit"
+text = "QUIT_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="TitleLabel" type="Label" parent="Control/HUDcanva"]
 anchors_preset = 5
@@ -206,10 +388,12 @@ anchors_preset = 0
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 180.0
+offset_right = 393.0
 offset_bottom = 104.0
-theme = ExtResource("2_sfc2u")
-text = "Pause"
+theme = ExtResource("3_etpbg")
+text = "PAUSE_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="Restart" type="Button" parent="Control/HUDcanva/ButtonInGameComputer"]
 visible = false
@@ -217,13 +401,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1318.0
+offset_left = 1233.0
 offset_top = 20.0
 offset_right = 1656.0
 offset_bottom = 104.0
 grow_horizontal = 0
-theme = ExtResource("2_sfc2u")
-text = "Restart"
+theme = ExtResource("3_etpbg")
+text = "RESTART_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="ButtonInGameBorne" type="Control" parent="Control/HUDcanva"]
 visible = false
@@ -255,12 +441,13 @@ offset_top = 120.0
 offset_right = 200.0
 offset_bottom = 291.0
 grow_horizontal = 2
-theme = ExtResource("2_sfc2u")
+theme = ExtResource("3_etpbg")
 theme_override_font_sizes/font_size = 90
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OptionsUI" parent="Control/HUDcanva" instance=ExtResource("3_60fqp")]
+layer = 3
 visible = false
 
 [node name="Pause" type="Panel" parent="Control/HUDcanva"]
@@ -270,7 +457,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_sfc2u")
+theme = ExtResource("3_etpbg")
 
 [node name="PauseButton" type="GridContainer" parent="Control/HUDcanva/Pause"]
 layout_mode = 1
@@ -285,46 +472,56 @@ offset_right = 222.5
 offset_bottom = 310.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_sfc2u")
+theme = ExtResource("3_etpbg")
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 20
 
 [node name="Label" type="Label" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "Pause Menu"
+text = "PAUSE_MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Continue" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_sfc2u")
-text = "Continue"
+theme = ExtResource("3_etpbg")
+text = "CONTINUE_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="StartButton" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_sfc2u")
-text = "Restart"
+theme = ExtResource("3_etpbg")
+text = "RESTART_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="Rules" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_sfc2u")
-text = "Rules"
+theme = ExtResource("3_etpbg")
+text = "RULES_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="Menu" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_sfc2u")
-text = "Go back to the Menu"
+theme = ExtResource("3_etpbg")
+text = "MENU_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="Quitter" type="Button" parent="Control/HUDcanva/Pause/PauseButton"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_sfc2u")
-text = "Quit"
+theme = ExtResource("3_etpbg")
+text = "QUIT_BUTTON"
+script = ExtResource("7_ulpbq")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="CurrentPlayer" type="TextureRect" parent="Control/HUDcanva"]
 anchors_preset = 5
@@ -356,45 +553,8 @@ theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
 columns = 3
 
-[node name="RulesPanel" type="PanelContainer" parent="Control/HUDcanva"]
+[node name="RulesPanel" parent="Control/HUDcanva" instance=ExtResource("13_k2652")]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = -413.0
-offset_right = 700.0
-offset_bottom = 413.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_sfc2u")
-
-[node name="Container" type="VBoxContainer" parent="Control/HUDcanva/RulesPanel"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/HUDcanva/RulesPanel/Container"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
-bbcode_enabled = true
-text = "[b]Rules :[/b]
-
-To win, you must [b]align your symbol three times in the big tic-tac-toe board[/b].
-To claim a square on the big board, you have to [b]win the mini tic-tac-toe[/b] that represents it.
-To win a mini tic-tac-toe, the rule is the same as usual: you must line up three of your symbols.
-
-A [b]small twist[/b]: the position you play in a mini tic-tac-toe determines where your opponent must play next.
-For example, if you play in the top-right square of a mini board, your opponent must play in the top-right mini board.
-If that mini board has already been completed, the player is [b]free to play anywhere ![/b]
-
-Have fun!"
-
-[node name="RulesQuitButton" type="Button" parent="Control/HUDcanva/RulesPanel/Container"]
-layout_mode = 2
-size_flags_vertical = 10
-text = "Back"
 
 [node name="ChoixPions" parent="Control/HUDcanva" instance=ExtResource("8_wddia")]
 unique_name_in_owner = true
@@ -427,11 +587,34 @@ offset_bottom = 1065.0
 [node name="Points" type="Label" parent="Control/Reflexion"]
 offset_right = 1688.0
 offset_bottom = 1050.0
-theme = ExtResource("2_sfc2u")
+theme = ExtResource("3_etpbg")
 theme_override_font_sizes/font_size = 800
 text = "..."
 horizontal_alignment = 1
 vertical_alignment = 3
+
+[node name="SelectAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_688fl")
+bus = &"Sfx"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k2652")
+}
+
+[node name="SoundButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 20.0
+grow_horizontal = 0
+toggle_mode = true
+icon = ExtResource("15_k2652")
+flat = true
+script = ExtResource("16_4nvls")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [connection signal="change_state" from="Control/HUDcanva" to="." method="_on_hud_change_state"]
 [connection signal="return_menu" from="Control/HUDcanva" to="." method="_on_hud_canva_return_menu"]
@@ -439,14 +622,16 @@ vertical_alignment = 3
 [connection signal="pressed" from="Control/HUDcanva/StartMenuButton/StartButton" to="Control/HUDcanva" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/StartMenuButton/Menu" to="Control/HUDcanva" method="_on_menu_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/StartMenuButton/Rules" to="Control/HUDcanva" method="_on_rules_pressed"]
+[connection signal="pressed" from="Control/HUDcanva/StartMenuButton/Options" to="Control/HUDcanva" method="_on_options_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/StartMenuButton/Quitter" to="." method="_on_quitter_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/ButtonInGameComputer/Pause" to="Control/HUDcanva" method="_on_pause_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/ButtonInGameComputer/Restart" to="Control/HUDcanva" method="_on_restart_pressed"]
+[connection signal="difficulty_selected" from="Control/HUDcanva/OptionsUI" to="." method="_on_computer_strat_selected"]
 [connection signal="pressed" from="Control/HUDcanva/Pause/PauseButton/Continue" to="Control/HUDcanva" method="_on_continue_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/Pause/PauseButton/StartButton" to="Control/HUDcanva" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/Pause/PauseButton/Rules" to="Control/HUDcanva" method="_on_rules_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/Pause/PauseButton/Menu" to="Control/HUDcanva" method="_on_menu_pressed"]
 [connection signal="pressed" from="Control/HUDcanva/Pause/PauseButton/Quitter" to="." method="_on_quitter_pressed"]
-[connection signal="focus_entered" from="Control/HUDcanva/RulesPanel" to="Control/HUDcanva" method="_on_rules_panel_focus_entered"]
-[connection signal="pressed" from="Control/HUDcanva/RulesPanel/Container/RulesQuitButton" to="Control/HUDcanva" method="_on_rules_quit_button_pressed"]
 [connection signal="galant" from="Control/HUDcanva/ChoixPions" to="." method="_on_choix_pions_galant"]
+[connection signal="toggled" from="SoundButton" to="." method="_on_sound_button_toggled"]
+[connection signal="toggled" from="SoundButton" to="SoundButton" method="_on_toggled"]

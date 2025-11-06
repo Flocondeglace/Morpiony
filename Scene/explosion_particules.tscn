@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1nb4avkki6k0"]
+
+[ext_resource type="Texture2D" uid="uid://brmn5ombg6dhx" path="res://Image/kenney/grey_box.png" id="1_xhafh"]
+
+[sub_resource type="Gradient" id="Gradient_xhafh"]
+offsets = PackedFloat32Array(0.71945703, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_iqwwx"]
+offsets = PackedFloat32Array(0, 0.37104073, 0.60633487, 0.8552036, 1)
+colors = PackedColorArray(0.43529412, 0.11372549, 0.105882354, 1, 0.73333335, 0.5803922, 0.34117648, 1, 0.2627451, 0.15686275, 0.09411765, 1, 0.6, 0.34509805, 0.16470589, 1, 1, 0.9019608, 0.654902, 1)
+
+[node name="ExplosionParticules" type="CPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 32
+texture = ExtResource("1_xhafh")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+particle_flag_align_y = true
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+orbit_velocity_min = 0.5
+orbit_velocity_max = 1.0
+color_ramp = SubResource("Gradient_xhafh")
+color_initial_ramp = SubResource("Gradient_iqwwx")

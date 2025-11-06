@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4e5urc4pptpp"]
 
-[ext_resource type="Script" path="res://Script/mini_morpion.gd" id="1_7cseo"]
+[ext_resource type="Script" uid="uid://bqkfnyx6qeu4x" path="res://Script/mini_morpion.gd" id="1_7cseo"]
 
 [node name="MiniMorpion" type="GridContainer"]
 anchors_preset = 8

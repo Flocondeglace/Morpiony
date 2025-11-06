@@ -104,8 +104,6 @@ func effect_finish():
 	light.queue_free()
 	
 	
-
-	
 func check_winner():
 	var fini : bool = false
 	for i in range (1,3):

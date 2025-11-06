@@ -1,3 +1,4 @@
+class_name HUD
 extends CanvasLayer
 # pour l'export
 var borne: bool = false
@@ -24,9 +25,7 @@ signal change_state
 @onready var current_player: TextureRect = $CurrentPlayer
 @onready var resultat_morpion: GridContainer = $ResultatMorpion
 @onready var start_menu_button: GridContainer = $StartMenuButton
-@onready var rules_panel: PanelContainer = $RulesPanel
-
-# Block qui servent pas encore
+@onready var rules_panel: CanvasLayer = $RulesPanel
 @onready var options_ui: CanvasLayer = $OptionsUI
 
 # Variable
@@ -44,9 +43,6 @@ var selected
 
 @onready var rules_button_pause: Button = $Pause/PauseButton/Rules
 @onready var continuer_button: Button = $Pause/PauseButton/Continue
-
-@onready var rules_quit_button: Button = $RulesPanel/Container/RulesQuitButton
-
 
 var big
 
@@ -79,8 +75,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("pause") && state == "pause":
 			pause_menu_hide()
 			$CurrentPlayer.show()
-			# 
-			selected.grab_focus()
+			# selected.grab_focus()
 
 
 
@@ -117,9 +112,9 @@ func desact_menu_start():
 func act_menu_start():
 	tout_cacher()
 	menu_button_win.hide()
-	start_button.text = 'Play'
-	# start_menu_button.show()
-	start_button.grab_focus()
+	start_button.text = 'PLAY_BUTTON'
+	start_menu_button.show()
+	# start_button.grab_focus()
 	$TitleLabel.show()
 
 func desact_menu_pause():
@@ -144,13 +139,13 @@ func end_of_game(nom_winner):
 	button_in_game_computer.hide()
 	button_in_game_borne.hide()
 	current_player.hide()
-	start_button.text = "Replay"
-	# start_menu_button.show()
-	start_button.grab_focus()
+	start_button.text = "REPLAY_BUTTON"
+	start_menu_button.show()
+	# start_button.grab_focus()
 	if (nom_winner != ""):
-		$WinLayer/WinnerLabel.text = nom_winner + " a gagné :)"
+		$WinLayer/WinnerLabel.text = nom_winner +" "+ tr("WIN_TEXT")
 	else :
-		$WinLayer/WinnerLabel.text = "Egalité : Aucun gagnant aucun perdant \n tout le monde est content ?!"
+		$WinLayer/WinnerLabel.text = tr("TIE_TEXT")
 	win_layer.show()
 	menu_button_win.show()
 	resultat_morpion.show()
@@ -176,7 +171,7 @@ func _on_menu_pressed():
 func pause_menu_show():
 	set_state("pause")
 	pause.show()
-	# continuer_button.grab_focus()
+	continuer_button.grab_focus()
 
 func pause_menu_hide():
 	set_state("game")
@@ -187,7 +182,6 @@ func set_state(s):
 	change_state.emit()
 	
 func reflexion_show(_b):
-	
 	reflexion.show()
 	for i in range(0,2):
 		points.text = "."
@@ -207,17 +201,19 @@ func _on_continue_pressed():
 
 func _on_rules_pressed():
 	rules_panel.show()
-	# rules_quit_button.grab_focus()
-
-
-func _on_rules_quit_button_pressed():
-	rules_panel.hide()
-	# if state == "pause":
-		#rules_button_pause.grab_focus()
-	#else :
-		#rules_button_debut.grab_focus()
-		
-
-
+	
 func _on_pause_pressed() -> void:
 	pause_menu_show()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		if state == "game":
+			pause_menu_show()
+		else:
+			get_tree().quit()
+
+func options_show():
+	options_ui.show()
+
+func _on_options_pressed() -> void:
+	options_show()

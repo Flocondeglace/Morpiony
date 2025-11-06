@@ -6,6 +6,8 @@ var player_turn = 1
 var morp = []
 var morpdispo = []
 
+@onready var computer = $Computer
+
 @onready var big_morpion = $CenterContainer/BigMorpion
 var galant : bool
 var ia_turn : int = 2
@@ -17,7 +19,7 @@ var ia_turn : int = 2
 # Couleur halloween
 var couleur = [Color(Color.CORAL,0.4),Color(Color.DIM_GRAY,1)]
 
-var hud
+var hud : HUD
 var current_player_rect
 var resultat_morpion
 # position du morpion dans lequel le joueur doit jouer
@@ -114,7 +116,7 @@ func choisir_pions():
 		else:
 			choix_pions.changer_couleur(Color.RED)
 			
-		choix_pions.changer_texte("Joueur " + str(i + 1),i==0)
+		choix_pions.changer_texte(tr("PLAYER") + " " + str(i + 1),i==0)
 			
 		var nom = await choix_pions.joueurChoisi
 		if i==0:
@@ -206,24 +208,27 @@ func change_player():
 	player_turn = 1 + player_turn%2
 	current_player_rect.set_texture(case[player_turn])
 
-func computer_play():
+func computer_choose():
 	var liste = []
 	for minim in morpdispo:
 		#push_warning(str(mini.num))
 		liste.append(minim.cdispo)
-	var _choice = $Computer.play(player_turn,morp, liste,morpdispo)
+	var _choice = computer.choose(player_turn,morp, liste,morpdispo)
+
+func computer_play():
+	computer.play()
 
 func computer_thinking():
 	if (nbHumanPlayer == 1 && player_turn == ia_turn):
+		computer_choose()
 		var think_timer = Timer.new()
 		add_child(think_timer)
 		hud.reflexion_show(true)
-		think_timer.start(2)
+		think_timer.start(hud.time_anim_reflextion)
 		await think_timer.timeout
-		think_timer.queue_free()
-		#hud.reflexion_show(false)
 		computer_play()
-	
+		think_timer.queue_free()
+
 
 func _on_mini_morpion_minimorpion_played(played,position):
 	var morp_played = morp[played]
@@ -303,10 +308,10 @@ func _on_hud_return_menu():
 func _on_hud_change_state():
 	if hud:
 		if hud.state != "game":
-			push_warning("activate every one")
+			# push_warning("activate every one")
 			activate(-1, true)
 		else :
-			push_warning("activate first player:"+str(player_turn-1) + " no " +str(player_turn%2))
+			# push_warning("activate first player:"+str(player_turn-1) + " no " +str(player_turn%2))
 			# activate(player_turn-1,true)
 			activate(-1,false)
 			activate(player_turn-1,true)
