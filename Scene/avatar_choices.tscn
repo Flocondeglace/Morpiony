@@ -1,0 +1,160 @@
+[gd_scene load_steps=25 format=3 uid="uid://bl05tqwaichpe"]
+
+[ext_resource type="PackedScene" uid="uid://7inc2vpnxgqs" path="res://Scene/button_pion.tscn" id="1_osb2y"]
+[ext_resource type="Script" uid="uid://h15vtxo0j4g6" path="res://Script/avatar_buttons.gd" id="1_p7a6h"]
+[ext_resource type="ButtonGroup" uid="uid://b7v3u7f02fpqc" path="res://GroupButton/choix_perso_buttons.tres" id="2_2dob7"]
+[ext_resource type="Texture2D" uid="uid://caw4vrtamqla2" path="res://Image/Pions/7fault.png" id="2_7gys3"]
+[ext_resource type="Script" uid="uid://46x4g3j804gf" path="res://Script/click_button.gd" id="3_p7a6h"]
+[ext_resource type="Texture2D" uid="uid://cveokkx1tkpev" path="res://Image/Pions/cartel.png" id="4_2dob7"]
+[ext_resource type="Texture2D" uid="uid://ju30mcnqaxe5" path="res://Image/Pions/7lan.png" id="5_hjm45"]
+[ext_resource type="Texture2D" uid="uid://b0mroa7n0pajl" path="res://Image/Pions/buffalo.png" id="6_p1ahx"]
+[ext_resource type="Script" uid="uid://yikwik4p73ty" path="res://Script/avatar_button.gd" id="7_f6l2f"]
+[ext_resource type="AudioStream" uid="uid://cfjieigy5tm8i" path="res://Audio/Animals/cow.wav" id="8_c6ro7"]
+[ext_resource type="Texture2D" uid="uid://50auy0uydlxh" path="res://Image/Pions/chick.png" id="9_cj8q2"]
+[ext_resource type="AudioStream" uid="uid://dasu4mvojyl6t" path="res://Audio/Animals/chick.wav" id="10_abdsm"]
+[ext_resource type="Texture2D" uid="uid://cx306elbmh3ju" path="res://Image/Pions/chicken.png" id="11_8l0n3"]
+[ext_resource type="AudioStream" uid="uid://c2jjkncd0mnsl" path="res://Audio/Animals/chicken.wav" id="12_577ob"]
+[ext_resource type="Texture2D" uid="uid://br7fttdekc8e3" path="res://Image/Pions/cow.png" id="13_l2sjb"]
+[ext_resource type="Texture2D" uid="uid://bt3np8fen47l6" path="res://Image/Pions/elephant.png" id="14_s0klb"]
+[ext_resource type="Texture2D" uid="uid://doq3hlj1xc5xn" path="res://Image/Pions/gorilla.png" id="15_ax8x0"]
+[ext_resource type="AudioStream" uid="uid://bcmxngm1o2w8l" path="res://Audio/Animals/monkey.wav" id="16_d3mpk"]
+[ext_resource type="Texture2D" uid="uid://mwt0j8ucim6q" path="res://Image/Pions/parrot.png" id="17_vhoxl"]
+[ext_resource type="AudioStream" uid="uid://bu2hsxx05ocdq" path="res://Audio/Animals/parrot.wav" id="18_jrqc4"]
+[ext_resource type="Texture2D" uid="uid://bx4327k0ep2r3" path="res://Image/Pions/penguin.png" id="19_3xfss"]
+[ext_resource type="Texture2D" uid="uid://4tds6lpi72ui" path="res://Image/Pions/rabbit.png" id="20_826q2"]
+[ext_resource type="Texture2D" uid="uid://p3cysoyvdddr" path="res://Image/Pions/zebra.png" id="21_0cygi"]
+[ext_resource type="PackedScene" uid="uid://byao50adgkid2" path="res://Scene/select_audio_stream_player.tscn" id="28_2dob7"]
+
+[node name="AvatarChoices" type="GridContainer" node_paths=PackedStringArray("default_avatar")]
+size_flags_vertical = 3
+columns = 5
+script = ExtResource("1_p7a6h")
+default_avatar = NodePath("7Fault")
+group = ExtResource("2_2dob7")
+
+[node name="7Fault" parent="." instance=ExtResource("1_osb2y")]
+visible = false
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("2_7gys3")
+script = ExtResource("3_p7a6h")
+
+[node name="Cartel" parent="." instance=ExtResource("1_osb2y")]
+visible = false
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("4_2dob7")
+script = ExtResource("3_p7a6h")
+
+[node name="7lan" parent="." instance=ExtResource("1_osb2y")]
+visible = false
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("5_hjm45")
+script = ExtResource("3_p7a6h")
+
+[node name="Buffalo" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("6_p1ahx")
+script = ExtResource("7_f6l2f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Buffalo"]
+stream = ExtResource("8_c6ro7")
+volume_db = 8.0
+bus = &"MyVoice"
+
+[node name="Chick" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("9_cj8q2")
+script = ExtResource("7_f6l2f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Chick"]
+stream = ExtResource("10_abdsm")
+volume_db = 8.0
+bus = &"MyVoice"
+
+[node name="Chicken" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("11_8l0n3")
+script = ExtResource("7_f6l2f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Chicken"]
+stream = ExtResource("12_577ob")
+volume_db = 8.0
+bus = &"MyVoice"
+
+[node name="Cow" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("13_l2sjb")
+script = ExtResource("7_f6l2f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cow"]
+stream = ExtResource("8_c6ro7")
+volume_db = 8.0
+bus = &"MyVoice"
+
+[node name="Elephant" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("14_s0klb")
+script = ExtResource("3_p7a6h")
+
+[node name="Gorilla" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("15_ax8x0")
+script = ExtResource("7_f6l2f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gorilla"]
+stream = ExtResource("16_d3mpk")
+volume_db = 8.0
+bus = &"MyVoice"
+
+[node name="Parrot" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("17_vhoxl")
+script = ExtResource("7_f6l2f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Parrot"]
+stream = ExtResource("18_jrqc4")
+volume_db = 8.0
+bus = &"MyVoice"
+
+[node name="Penguin" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("19_3xfss")
+script = ExtResource("3_p7a6h")
+
+[node name="Rabbit" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("20_826q2")
+script = ExtResource("3_p7a6h")
+
+[node name="Zebra" parent="." instance=ExtResource("1_osb2y")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_type_variation = &"AvatarButton"
+icon = ExtResource("21_0cygi")
+script = ExtResource("3_p7a6h")
+
+[node name="SelectAudioStreamPlayer" parent="." instance=ExtResource("28_2dob7")]
+unique_name_in_owner = true

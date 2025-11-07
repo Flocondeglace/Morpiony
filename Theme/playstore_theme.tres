@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://dh1tljd37ifvs"]
+[gd_resource type="Theme" load_steps=27 format=3 uid="uid://dh1tljd37ifvs"]
 
+[ext_resource type="StyleBox" uid="uid://bc5rkaiuyrfl6" path="res://Theme/style_box/playstore_border_zoom_box_texture_gold.tres" id="1_7jhlr"]
 [ext_resource type="StyleBox" uid="uid://yt5jfltyj6df" path="res://Theme/playstore_style_box_flat.tres" id="1_cenh8"]
 [ext_resource type="StyleBox" uid="uid://d4udi053dbmq" path="res://Theme/style_box/playstore_border_zoom_box_texture.tres" id="2_1m1kx"]
+[ext_resource type="Texture2D" uid="uid://cn6tnmirl0b12" path="res://Image/kenney/Fantasy-ui-border/Border/panel-border-005.png" id="2_yjh0w"]
 [ext_resource type="StyleBox" uid="uid://nr55n46hqes3" path="res://Theme/style_box/playstore_border_box_texture.tres" id="3_cenh8"]
 [ext_resource type="Texture2D" uid="uid://ddc058t4cstdy" path="res://Image/kenney/UI/icon_checkmark.png" id="4_i6g0u"]
 [ext_resource type="FontFile" uid="uid://24xgmyn4n2hk" path="res://Font/Letters for Learners.ttf" id="4_mme11"]
@@ -11,6 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://pfnnfu6vvswn" path="res://Image/kenney/Fantasy-ui-border/Panel/panel-005-colored.png" id="6_1m1kx"]
 [ext_resource type="Texture2D" uid="uid://b5h35hyterm5p" path="res://Image/radio_button_1_colored.png" id="7_mme11"]
 [ext_resource type="Texture2D" uid="uid://7rphxb320ev" path="res://Image/radio_button_0.png" id="8_i6g0u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4po3e"]
+texture = ExtResource("2_yjh0w")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 0.9019608, 0.654902, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yjh0w"]
+color = Color(1, 0.9019608, 0.654902, 1)
+thickness = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cenh8"]
 
@@ -52,6 +66,12 @@ color = Color(1, 0.9019608, 0.654902, 1)
 [resource]
 default_font = ExtResource("4_mme11")
 default_font_size = 64
+AvatarButton/base_type = &"Button"
+AvatarButton/styles/focus = ExtResource("1_7jhlr")
+AvatarButton/styles/hover = ExtResource("1_7jhlr")
+AvatarButton/styles/hover_pressed = ExtResource("1_7jhlr")
+AvatarButton/styles/normal = SubResource("StyleBoxTexture_4po3e")
+AvatarButton/styles/pressed = ExtResource("1_7jhlr")
 Button/colors/font_color = Color(1, 0.9019608, 0.654902, 1)
 Button/colors/font_disabled_color = Color(1, 0.9019608, 0.654902, 0.5019608)
 Button/colors/font_focus_color = Color(0.95, 0.8557917, 0.61749995, 1)
@@ -81,12 +101,14 @@ CheckButton/icons/checked = ExtResource("4_i6g0u")
 CheckButton/icons/unchecked = ExtResource("5_e3uhs")
 GridContainer/constants/h_separation = 16
 GridContainer/constants/v_separation = 16
+HSeparator/styles/separator = SubResource("StyleBoxLine_yjh0w")
+HeaderLarge/font_sizes/font_size = 96
 Label/colors/font_color = Color(1, 0.9019608, 0.654902, 1)
 Label/font_sizes/font_size = 72
 Label/fonts/font = ExtResource("4_mme11")
 MarginContainer/constants/margin_bottom = 64
-MarginContainer/constants/margin_left = 96
-MarginContainer/constants/margin_right = 96
+MarginContainer/constants/margin_left = 64
+MarginContainer/constants/margin_right = 64
 MarginContainer/constants/margin_top = 64
 NoDesignButton/base_type = &"Button"
 NoDesignButton/styles/focus = SubResource("StyleBoxEmpty_cenh8")

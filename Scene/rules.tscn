@@ -15,30 +15,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -668.0
-offset_top = -381.0
-offset_right = 668.0
-offset_bottom = 381.0
+offset_left = -790.0
+offset_top = -495.0
+offset_right = 800.0
+offset_bottom = 490.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_diu8i")
 
-[node name="Container" type="VBoxContainer" parent="PanelContainer"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 1304.0
-offset_bottom = 730.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Container"]
+[node name="Container" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Container"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "RULES"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/Container"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
 bbcode_enabled = true
-text = "RULES"
+text = "RULES_TEXT"
 
-[node name="BackButton" type="Button" parent="PanelContainer/Container"]
+[node name="BackButton" type="Button" parent="PanelContainer/MarginContainer/Container"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
@@ -49,4 +59,4 @@ metadata/_custom_type_script = "uid://46x4g3j804gf"
 [node name="SelectAudioStreamPlayer" parent="." instance=ExtResource("4_sqkpf")]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="PanelContainer/Container/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Container/BackButton" to="." method="_on_back_button_pressed"]

@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://xb11ogvpu00q" path="res://Image/kenney/GameIcons/information.png" id="5_x18tc"]
 [ext_resource type="Script" uid="uid://dvkxri88cppvn" path="res://Script/ClickButtonWithArrow.gd" id="6_jil0r"]
 [ext_resource type="Texture2D" uid="uid://d0rihdufgtp1k" path="res://Image/kenney/GameIcons/gear.png" id="6_xem62"]
-[ext_resource type="Texture2D" uid="uid://dpolplhhd2wjq" path="res://Image/kenney/GameIcons/down.png" id="7_haadr"]
 [ext_resource type="Texture2D" uid="uid://mvxtyldew20" path="res://Image/kenney/GameIcons/exitRight.png" id="7_xcgx2"]
 [ext_resource type="PackedScene" uid="uid://byao50adgkid2" path="res://Scene/select_audio_stream_player.tscn" id="8_gbt2k"]
 [ext_resource type="Script" uid="uid://b6804h6676jt3" path="res://Script/background_animation_player.gd" id="10_4uqcu"]
@@ -143,6 +142,8 @@ _data = {
 &"think": SubResource("Animation_1e5vl")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gbqv"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pi7hr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg6c0"]
@@ -188,26 +189,32 @@ offset_bottom = 40.0
 theme = ExtResource("1_c4c7f")
 
 [node name="Menu" type="CanvasLayer" parent="Popups"]
-visible = false
 
 [node name="Menu" type="GridContainer" parent="Popups/Menu"]
-modulate = Color(1, 0.9019608, 0.654902, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -417.0
-offset_top = -344.0
-offset_right = 417.0
-offset_bottom = 406.0
+offset_top = -410.0
+offset_right = 423.0
+offset_bottom = 430.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_c4c7f")
 columns = 3
 
+[node name="Label" type="Label" parent="Popups/Menu/Menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 128
+text = "MOR"
+horizontal_alignment = 1
+
 [node name="Empty1" type="Button" parent="Popups/Menu/Menu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -235,21 +242,6 @@ expand_icon = true
 script = ExtResource("6_jil0r")
 metadata/_custom_type_script = "uid://46x4g3j804gf"
 
-[node name="TextureRect" type="TextureRect" parent="Popups/Menu/Menu/Solo"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -49.0
-offset_top = -218.0
-offset_right = 51.0
-offset_bottom = -118.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_haadr")
-
 [node name="Versus" type="Button" parent="Popups/Menu/Menu"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -264,17 +256,6 @@ expand_icon = true
 script = ExtResource("6_jil0r")
 metadata/_custom_type_script = "uid://dvkxri88cppvn"
 
-[node name="TextureRect" type="TextureRect" parent="Popups/Menu/Menu/Versus"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -49.5
-offset_top = -100.0
-offset_right = 50.5
-grow_horizontal = 2
-texture = ExtResource("7_haadr")
-
 [node name="Rules" type="Button" parent="Popups/Menu/Menu"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -287,7 +268,15 @@ expand_icon = true
 script = ExtResource("2_gbt2k")
 metadata/_custom_type_script = "uid://46x4g3j804gf"
 
+[node name="Label2" type="Label" parent="Popups/Menu/Menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 128
+text = "PIO"
+horizontal_alignment = 1
+
 [node name="Empty2" type="Button" parent="Popups/Menu/Menu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -336,61 +325,41 @@ expand_icon = true
 script = ExtResource("2_gbt2k")
 metadata/_custom_type_script = "uid://46x4g3j804gf"
 
+[node name="Label3" type="Label" parent="Popups/Menu/Menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 128
+text = "NY"
+horizontal_alignment = 1
+
 [node name="Empty3" type="Button" parent="Popups/Menu/Menu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"NoDesignButton"
+theme_override_colors/font_color = Color(1, 0.9019608, 0.654902, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.8557917, 0.61749995, 1)
+theme_override_colors/font_pressed_color = Color(0.95, 0.8557917, 0.61749995, 0.5882353)
+theme_override_colors/font_hover_color = Color(0.95, 0.8557917, 0.61749995, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.95, 0.8557917, 0.61749995, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.9019608, 0.654902, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.9019608, 0.654902, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.9019608, 0.654902, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.9019608, 0.654902, 0.5882353)
+theme_override_colors/icon_hover_color = Color(1, 0.9019608, 0.654902, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.9019608, 0.654902, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+theme_override_font_sizes/font_size = 128
 disabled = true
+text = "NY"
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("2_gbt2k")
 metadata/_custom_type_script = "uid://46x4g3j804gf"
-
-[node name="Label" type="Label" parent="Popups/Menu"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -388.0
-offset_top = 237.0
-offset_right = -181.0
-offset_bottom = 365.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 128
-text = "MOR"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Popups/Menu"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -83.0
-offset_top = 497.0
-offset_right = 117.0
-offset_bottom = 625.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 128
-text = "PIO"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="Popups/Menu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 188.0
-offset_top = 227.0
-offset_right = 388.0
-offset_bottom = 355.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 128
-text = "NY"
-horizontal_alignment = 1
 
 [node name="Options" parent="Popups" instance=ExtResource("11_xem62")]
 layer = 3
@@ -575,9 +544,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -432.0
-offset_right = 400.0
+offset_left = -566.0
+offset_top = -457.0
+offset_right = 522.0
 offset_bottom = 468.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -590,18 +559,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Popups/Pause/Panel/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Popups/Pause/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Popups/Pause/Panel/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Popups/Pause/Panel/MarginContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "PAUSE_MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Popups/Pause/Panel/MarginContainer"]
+[node name="HSeparator" type="HSeparator" parent="Popups/Pause/Panel/MarginContainer/CenterContainer/GridContainer"]
 layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="Popups/Pause/Panel/MarginContainer/CenterContainer"]
-layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2gbqv")
 
 [node name="Continue" type="Button" parent="Popups/Pause/Panel/MarginContainer/CenterContainer/GridContainer"]
 layout_mode = 2
@@ -674,6 +648,7 @@ unique_name_in_owner = true
 [connection signal="pressed" from="Popups/Menu/Menu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="reflexion_finished" from="Popups/Reflexion" to="." method="_on_reflexion_finished"]
 [connection signal="pressed" from="Popups/Game/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pawn_selected" from="Popups/PawnSelection" to="." method="_on_pawn_selected"]
 [connection signal="pressed" from="Popups/EndGame/GridContainer/Replay" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Popups/EndGame/GridContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Popups/Pause/Panel/MarginContainer/CenterContainer/GridContainer/Continue" to="Popups/Pause" method="_on_continue_pressed"]

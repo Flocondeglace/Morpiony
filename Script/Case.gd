@@ -4,8 +4,8 @@ extends Button
 signal has_play
 
 var case_empty = preload("res://Image/case_empty.png")
-var case_p1 = preload("res://Image/ber7ker.png")
-var case_p2 = preload("res://Image/pan7on.png")
+var case_p1
+var case_p2
 var case_egal = preload("res://Image/case_empty.png")
 @onready var audio_stream_player_1: AudioStreamPlayer = $AudioStreamPlayer1
 @onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2

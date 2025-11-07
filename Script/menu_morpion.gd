@@ -17,7 +17,7 @@ extends Control
 @onready var reflexion: CanvasLayer = $Popups/Reflexion
 @onready var menu: CanvasLayer = $Popups/Menu
 @onready var game: CanvasLayer = $Popups/Game
-@onready var pawn_selection: CanvasLayer = $Popups/PawnSelection
+@onready var pawn_selection: PawnSelection = $Popups/PawnSelection
 @onready var end_game: EndGame = $Popups/EndGame
 @onready var pause: CanvasLayer = $Popups/Pause
 
@@ -74,8 +74,9 @@ func _on_rules_pressed() -> void:
 	rules.show()
 
 func _on_play_pressed() -> void:
-	mask_popups()
-	new_game()
+	end_game.hide()
+	# mask_popups()
+	select_pawn()
 
 # position du morpion dans lequel le joueur doit jouer
 var pos
@@ -85,23 +86,7 @@ var case
 func select_pawn():
 	pawn_names = []
 	galant = false
-	pawn_selection.show();
-	for i in range(nbHumanPlayer):
-		pawn_selection.changer_couleur(player_back_color[i])
-			
-		pawn_selection.changer_texte(tr("PLAYER") + " " + str(i + 1),i==0)
-			
-		var pawn_name = await pawn_selection.joueurChoisi
-		if i==0:
-			galant = await pawn_selection.galant
-		pawn_names.append(pawn_name)
-	if nbHumanPlayer == 1 :
-		pawn_names.append("Godot")
-	export_to_logos()
-	print("fin choix " + str(galant))
-	pawn_selection.hide()
-	pawn_selection.reset()
-	in_game = true
+	pawn_selection.show_pawn_selection((nbHumanPlayer == 2))
 
 func export_to_logos():
 	logos = []
@@ -110,7 +95,7 @@ func export_to_logos():
 
 func new_game():
 	print("newgame")
-	
+	in_game = true	
 	# Set Up Computer
 	if nbHumanPlayer == 1:
 		if computer:
@@ -118,9 +103,7 @@ func new_game():
 		else:
 			computer = Computer.new()
 		computer.change_strat(computer_strat)
-	
-	in_game = true
-	await select_pawn()
+	mask_popups()
 	game.show()
 	print("first :" + str(galant))
 	clear_game()
@@ -317,3 +300,21 @@ func _on_reflexion_finished() -> void:
 
 func _on_pause_pressed() -> void:
 	pause.show()
+
+func _on_pawn_selected(names: Array[String], gal: bool) -> void:
+	pawn_names = names
+	galant = gal
+	menu.hide()
+	export_to_logos()
+	print("fin choix " + str(galant))
+	
+	if nbHumanPlayer == 1 :
+		match names[1]:
+			"bronze":
+				computer_strat = 0
+			"silver":
+				computer_strat = 1
+			"gold":
+				computer_strat = 2
+	
+	new_game()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2d1fjmfpq5sp"]
+[gd_scene load_steps=5 format=3 uid="uid://d2d1fjmfpq5sp"]
 
 [ext_resource type="Script" uid="uid://by7slslpxafpg" path="res://Script/options.gd" id="1_b6d5p"]
-[ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="1_lj6b1"]
 [ext_resource type="Theme" uid="uid://dh1tljd37ifvs" path="res://Theme/playstore_theme.tres" id="2_7oicd"]
 [ext_resource type="Script" uid="uid://46x4g3j804gf" path="res://Script/click_button.gd" id="3_e6rhw"]
 [ext_resource type="PackedScene" uid="uid://byao50adgkid2" path="res://Scene/select_audio_stream_player.tscn" id="4_7oicd"]
@@ -28,8 +27,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -90.0
-offset_right = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -39,40 +36,35 @@ layout_mode = 2
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("1_lj6b1")
+theme_type_variation = &"HeaderLarge"
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 0
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Panel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="DifficultyLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2"]
+[node name="DifficultyLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "COMPUTER_STRATEGY"
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DifficultyButton" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2"]
+[node name="DifficultyButton" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -86,19 +78,19 @@ popup/item_1/id = 1
 popup/item_2/text = "DEFENSE"
 popup/item_2/id = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "LANGUAGE"
 
-[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="OptionButtonLanguage" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+[node name="OptionButtonLanguage" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -108,8 +100,12 @@ popup/item_0/id = 0
 popup/item_1/text = "FRENCH"
 popup/item_1/id = 1
 
-[node name="Credits" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
+
+[node name="Credits" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
 bbcode_enabled = true
 text = "CREDIT"
 fit_content = true
@@ -124,6 +120,6 @@ metadata/_custom_type_script = "uid://46x4g3j804gf"
 [node name="SelectAudioStreamPlayer" parent="." instance=ExtResource("4_7oicd")]
 unique_name_in_owner = true
 
-[connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2/DifficultyButton" to="." method="_on_difficulty_selected"]
-[connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer/OptionButtonLanguage" to="." method="_on_language_selected"]
+[connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer2/DifficultyButton" to="." method="_on_difficulty_selected"]
+[connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/HBoxContainer/OptionButtonLanguage" to="." method="_on_language_selected"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

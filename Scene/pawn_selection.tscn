@@ -1,34 +1,39 @@
-[gd_scene load_steps=25 format=3 uid="uid://df14bxq5basr"]
+[gd_scene load_steps=18 format=3 uid="uid://df14bxq5basr"]
 
 [ext_resource type="Theme" uid="uid://cbs4vc35jti5l" path="res://Theme/7Lan_theme.tres" id="1_2ggui"]
-[ext_resource type="Script" uid="uid://bucehmcuv0wqh" path="res://Script/validation_choix_perso.gd" id="2_d7bi3"]
-[ext_resource type="PackedScene" uid="uid://7inc2vpnxgqs" path="res://Scene/button_pion.tscn" id="2_kw1rl"]
-[ext_resource type="Texture2D" uid="uid://caw4vrtamqla2" path="res://Image/Pions/7fault.png" id="3_dr4gg"]
-[ext_resource type="Texture2D" uid="uid://cveokkx1tkpev" path="res://Image/Pions/cartel.png" id="5_1nib2"]
-[ext_resource type="Texture2D" uid="uid://ju30mcnqaxe5" path="res://Image/Pions/7lan.png" id="5_uiu21"]
-[ext_resource type="Texture2D" uid="uid://b0mroa7n0pajl" path="res://Image/Pions/buffalo.png" id="6_msob0"]
-[ext_resource type="Texture2D" uid="uid://50auy0uydlxh" path="res://Image/Pions/chick.png" id="7_rja02"]
-[ext_resource type="Texture2D" uid="uid://cx306elbmh3ju" path="res://Image/Pions/chicken.png" id="8_r4y47"]
-[ext_resource type="Texture2D" uid="uid://br7fttdekc8e3" path="res://Image/Pions/cow.png" id="9_egryt"]
-[ext_resource type="Texture2D" uid="uid://bt3np8fen47l6" path="res://Image/Pions/elephant.png" id="10_qrv3o"]
-[ext_resource type="Texture2D" uid="uid://doq3hlj1xc5xn" path="res://Image/Pions/gorilla.png" id="11_j01qs"]
-[ext_resource type="Texture2D" uid="uid://mwt0j8ucim6q" path="res://Image/Pions/parrot.png" id="12_uv27a"]
-[ext_resource type="Texture2D" uid="uid://bx4327k0ep2r3" path="res://Image/Pions/penguin.png" id="13_05654"]
-[ext_resource type="Texture2D" uid="uid://4tds6lpi72ui" path="res://Image/Pions/rabbit.png" id="14_544tk"]
-[ext_resource type="Texture2D" uid="uid://p3cysoyvdddr" path="res://Image/Pions/zebra.png" id="15_tq1pb"]
-[ext_resource type="Texture2D" uid="uid://bd5sx4ur0sbs5" path="res://Image/Pions/pan7on.png" id="16_1x17n"]
-[ext_resource type="Texture2D" uid="uid://kkwf0mxwuy68" path="res://Image/Pions/gd7t.png" id="18_k6401"]
-[ext_resource type="Texture2D" uid="uid://c1hhxsfg83rsy" path="res://Image/Pions/capitoledulibre.png" id="19_lwo4c"]
-[ext_resource type="Texture2D" uid="uid://dd8ujhwi1ruj4" path="res://Image/Pions/capitoledulibre2.png" id="20_osbsf"]
+[ext_resource type="Script" uid="uid://bucehmcuv0wqh" path="res://Script/pawn_selection.gd" id="1_3d35v"]
+[ext_resource type="Texture2D" uid="uid://b58xjmkqeduxn" path="res://Image/kenney/UI/arrowLeftCropped.png" id="2_onxnq"]
+[ext_resource type="PackedScene" uid="uid://bl05tqwaichpe" path="res://Scene/avatar_choices.tscn" id="5_3d35v"]
+[ext_resource type="Script" uid="uid://h15vtxo0j4g6" path="res://Script/avatar_buttons.gd" id="6_ybs8c"]
+[ext_resource type="Texture2D" uid="uid://cmkce34opbcn3" path="res://Image/Pions/bronze.png" id="7_danpb"]
+[ext_resource type="Script" uid="uid://dvkxri88cppvn" path="res://Script/ClickButtonWithArrow.gd" id="8_onxnq"]
+[ext_resource type="Texture2D" uid="uid://dsydyfia11t2d" path="res://Image/Pions/silver.png" id="8_xei4s"]
+[ext_resource type="Texture2D" uid="uid://dywpqvprkr7b4" path="res://Image/Pions/gold.png" id="9_onxnq"]
 [ext_resource type="Script" uid="uid://46x4g3j804gf" path="res://Script/click_button.gd" id="21_ob7g2"]
 [ext_resource type="Texture2D" uid="uid://5pm8la3qhvkm" path="res://Image/kenney/GameIcons/right.png" id="21_u2r32"]
 [ext_resource type="PackedScene" uid="uid://byao50adgkid2" path="res://Scene/select_audio_stream_player.tscn" id="22_dh7jh"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7pws5"]
+color = Color(1, 0.9019608, 0.654902, 1)
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_onxnq"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rad80"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_onxnq"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2l0a"]
 
-[node name="PawnSelection" type="CanvasLayer"]
+[node name="PawnSelection" type="CanvasLayer" node_paths=PackedStringArray("player1_choices", "player2_choices", "computer_choices", "player2_ui", "computer_ui")]
 layer = 3
-script = ExtResource("2_d7bi3")
+script = ExtResource("1_3d35v")
+player1_choices = NodePath("PanelContainer/MarginContainer/Container/HBoxContainer3/Player1/AvatarChoices")
+player2_choices = NodePath("PanelContainer/MarginContainer/Container/HBoxContainer3/Player2/AvatarChoices")
+computer_choices = NodePath("PanelContainer/MarginContainer/Container/HBoxContainer3/Computer/GridContainer")
+player2_ui = NodePath("PanelContainer/MarginContainer/Container/HBoxContainer3/Player2")
+computer_ui = NodePath("PanelContainer/MarginContainer/Container/HBoxContainer3/Computer")
 
 [node name="PanelContainer" type="Panel" parent="."]
 anchors_preset = 8
@@ -36,24 +41,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = -462.0
-offset_right = 700.0
+offset_left = -796.0
+offset_top = -483.0
+offset_right = 793.0
 offset_bottom = 464.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Container" type="VBoxContainer" parent="PanelContainer"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 1312.0
-offset_bottom = 708.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 
-[node name="Joueur" type="Label" parent="PanelContainer/Container"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/Container"]
 layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Player1" type="VBoxContainer" parent="PanelContainer/MarginContainer/Container/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Joueur" type="Label" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 3.0
 theme = ExtResource("1_2ggui")
@@ -62,135 +86,173 @@ text = "PLAYER_1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Container"]
+[node name="AvatarChoices" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Player1" instance=ExtResource("5_3d35v")]
 layout_mode = 2
+size_flags_vertical = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Player1"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "CHOOSE_PIECE_TEXT"
 fit_content = true
+vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/Container"]
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Container/HBoxContainer3"]
 layout_mode = 2
-size_flags_vertical = 3
-columns = 6
+theme_override_constants/separation = 96
+theme_override_styles/separator = SubResource("StyleBoxLine_7pws5")
 
-[node name="7Fault" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
+[node name="Computer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Container/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Computer" type="Label" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("1_2ggui")
+theme_override_constants/outline_size = 4
+text = "COMPUTER_STRATEGY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_onxnq")
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer" node_paths=PackedStringArray("default_avatar")]
+layout_mode = 2
+columns = 3
+script = ExtResource("6_ybs8c")
+default_avatar = NodePath("Bronze")
+group = SubResource("ButtonGroup_rad80")
+id_player = 1
+
+[node name="Bronze" type="Button" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_type_variation = &"NoDesignButton"
+toggle_mode = true
+button_pressed = true
+text = "STUPID"
+icon = ExtResource("7_danpb")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("8_onxnq")
+metadata/_custom_type_script = "uid://dvkxri88cppvn"
+
+[node name="Silver" type="Button" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_type_variation = &"NoDesignButton"
+toggle_mode = true
+text = "ATTACK"
+icon = ExtResource("8_xei4s")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("8_onxnq")
+metadata/_custom_type_script = "uid://dvkxri88cppvn"
+
+[node name="Gold" type="Button" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_type_variation = &"NoDesignButton"
+toggle_mode = true
+text = "DEFENSE"
+icon = ExtResource("9_onxnq")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("8_onxnq")
+metadata/_custom_type_script = "uid://dvkxri88cppvn"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STRAT_TEXT"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Player2" type="VBoxContainer" parent="PanelContainer/MarginContainer/Container/HBoxContainer3"]
 visible = false
 layout_mode = 2
-icon = ExtResource("3_dr4gg")
-script = ExtResource("21_ob7g2")
+size_flags_horizontal = 3
+alignment = 1
 
-[node name="Cartel" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-visible = false
+[node name="Joueur2" type="Label" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Player2"]
 layout_mode = 2
-icon = ExtResource("5_1nib2")
-script = ExtResource("21_ob7g2")
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("1_2ggui")
+theme_override_constants/outline_size = 4
+text = "PLAYER_2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="7lan" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-visible = false
+[node name="AvatarChoices" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Player2" node_paths=PackedStringArray("default_avatar") instance=ExtResource("5_3d35v")]
 layout_mode = 2
-icon = ExtResource("5_uiu21")
-script = ExtResource("21_ob7g2")
+size_flags_vertical = 1
+default_avatar = NodePath("../../Computer/GridContainer/Bronze")
+group = SubResource("ButtonGroup_onxnq")
+id_player = 1
 
-[node name="Buffalo" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/Container/HBoxContainer3/Player2"]
 layout_mode = 2
-icon = ExtResource("6_msob0")
-script = ExtResource("21_ob7g2")
+size_flags_horizontal = 3
+text = "CHOOSE_PIECE_TEXT"
+fit_content = true
+vertical_alignment = 1
 
-[node name="Chick" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("7_rja02")
-script = ExtResource("21_ob7g2")
-
-[node name="Chicken" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("8_r4y47")
-script = ExtResource("21_ob7g2")
-
-[node name="Cow" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("9_egryt")
-script = ExtResource("21_ob7g2")
-
-[node name="Elephant" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("10_qrv3o")
-script = ExtResource("21_ob7g2")
-
-[node name="Gorilla" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("11_j01qs")
-script = ExtResource("21_ob7g2")
-
-[node name="Parrot" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("12_uv27a")
-script = ExtResource("21_ob7g2")
-
-[node name="Penguin" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("13_05654")
-script = ExtResource("21_ob7g2")
-
-[node name="Rabbit" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("14_544tk")
-script = ExtResource("21_ob7g2")
-
-[node name="Zebra" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-layout_mode = 2
-icon = ExtResource("15_tq1pb")
-script = ExtResource("21_ob7g2")
-
-[node name="Pan7on" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-visible = false
-layout_mode = 2
-icon = ExtResource("16_1x17n")
-script = ExtResource("21_ob7g2")
-
-[node name="Ber7ker" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-visible = false
-layout_mode = 2
-script = ExtResource("21_ob7g2")
-
-[node name="GD7T" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-visible = false
-layout_mode = 2
-icon = ExtResource("18_k6401")
-script = ExtResource("21_ob7g2")
-
-[node name="CapitoleDuLibre" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-visible = false
-layout_mode = 2
-icon = ExtResource("19_lwo4c")
-script = ExtResource("21_ob7g2")
-
-[node name="CapitoleDuLibre2" parent="PanelContainer/Container/GridContainer" instance=ExtResource("2_kw1rl")]
-visible = false
-layout_mode = 2
-icon = ExtResource("20_osbsf")
-script = ExtResource("21_ob7g2")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Container"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Container"]
 layout_mode = 2
 
-[node name="PlayFirst" type="CheckButton" parent="PanelContainer/Container/HBoxContainer"]
+[node name="PlayFirst" type="CheckButton" parent="PanelContainer/MarginContainer/Container/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 button_pressed = true
 text = "PLAYFIRST_BUTTON"
 script = ExtResource("21_ob7g2")
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/Container/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_u2l0a")
 
-[node name="ValiderButton" type="Button" parent="PanelContainer/Container/HBoxContainer"]
+[node name="ValiderButton" type="Button" parent="PanelContainer/MarginContainer/Container/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "PLAY_BUTTON"
 icon = ExtResource("21_u2r32")
+expand_icon = true
+script = ExtResource("21_ob7g2")
+metadata/_custom_type_script = "uid://46x4g3j804gf"
+
+[node name="Back" type="Button" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource("2_onxnq")
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("21_ob7g2")
 metadata/_custom_type_script = "uid://46x4g3j804gf"
 
 [node name="SelectAudioStreamPlayer" parent="." instance=ExtResource("22_dh7jh")]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="PanelContainer/Container/HBoxContainer/ValiderButton" to="." method="_on_valider"]
+[connection signal="avatar_selected" from="PanelContainer/MarginContainer/Container/HBoxContainer3/Player1/AvatarChoices" to="." method="_on_avatar_selected"]
+[connection signal="avatar_selected" from="PanelContainer/MarginContainer/Container/HBoxContainer3/Computer/GridContainer" to="." method="_on_avatar_selected"]
+[connection signal="avatar_selected" from="PanelContainer/MarginContainer/Container/HBoxContainer3/Player2/AvatarChoices" to="." method="_on_avatar_selected"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Container/HBoxContainer/ValiderButton" to="." method="_on_valider"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Back" to="." method="_on_back"]

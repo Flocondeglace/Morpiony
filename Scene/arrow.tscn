@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6dfqnwxehwkl"]
+
+[ext_resource type="Texture2D" uid="uid://lwpnim2f5xye" path="res://Image/kenney/GameIcons/down_cut.png" id="1_hevao"]
+
+[node name="Arrow" type="TextureRect"]
+modulate = Color(1, 0.9019608, 0.654902, 1)
+offset_right = 64.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_hevao")
+stretch_mode = 2

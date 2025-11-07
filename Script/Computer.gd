@@ -25,32 +25,32 @@ func play_strat_stupide():
 func play_strat_attaque():
 	hasneighbour = []
 	liste_choix = []
-	push_warning("Attaque")
+	# push_warning("Attaque")
 	liste_choix = play_attack()
 	if liste_choix == []:
-		push_warning("Defense")
+		# push_warning("Defense")
 		liste_choix = play_def()
 	if liste_choix == []:
-		push_warning("Voisin")
+		# push_warning("Voisin")
 		liste_choix = hasneighbour
 	if liste_choix == []:
-		push_warning("Aleatoire")
+		# push_warning("Aleatoire")
 		liste_choix.append(play_random(cases_disponibles))
 	return play_random_list(liste_choix)
 
 func play_strat_def():
 	hasneighbour = []
 	liste_choix = []
-	push_warning("Defense")
+	# push_warning("Defense")
 	liste_choix = play_def()
 	if liste_choix == []:
-		push_warning("Defense")
+		# push_warning("Defense")
 		liste_choix = play_attack()
 	if liste_choix == []:
-		push_warning("Voisin")
+		# push_warning("Voisin")
 		liste_choix = hasneighbour
 	if liste_choix == []:
-		push_warning("Aleatoire")
+		# push_warning("Aleatoire")
 		liste_choix.append(play_random(cases_disponibles))
 	return play_random_list(liste_choix)
 
@@ -129,10 +129,10 @@ func play_attack_mini(numPlayer,cases,conservation_voisins):
 		freecases_ord_line.append(freecases.filter(func (case): return case.pos/k == i))
 	for i in range (0,3):
 		if (wincases_ord_line[i].size() == 2 && freecases_ord_line[i].size() == 1):
-			push_warning("liiigne "+ str(i)+ " vpos : "+str(freecases_ord_line[i][0].pos))
+			# push_warning("liiigne "+ str(i)+ " vpos : "+str(freecases_ord_line[i][0].pos))
 			liste_propositions.append(freecases_ord_line[i][0])
 		if (wincases_ord_column[i].size() == 2 && freecases_ord_column[i].size() == 1):
-			push_warning("colooone "+ str(i)+ " vpos : " + str(freecases_ord_column[i][0].pos))
+			# push_warning("colooone "+ str(i)+ " vpos : " + str(freecases_ord_column[i][0].pos))
 			liste_propositions.append(freecases_ord_column[i][0])
 		if conservation_voisins :
 			if (wincases_ord_line[i].size()==1 && freecases_ord_line[i].size()>=1):
